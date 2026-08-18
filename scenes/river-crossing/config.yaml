@@ -1,0 +1,259 @@
+id: river-crossing
+
+meta:
+  title: The River Crossing
+
+actions:
+  - id: look
+    requires:
+      - type: flag
+        data: { flag: soldier-sent }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The road ends at a jetty and the river goes on past it, wide and grey and without
+            much interest in either bank. The ferry lies against the piles on a chain, the green
+            lanterns go away downstream on their posts until the fog has them, and the ferryman is
+            on the mooring post with the pole across their knees.
+      - type: response
+        data:
+          text: >-
+            The soldier is ahead of you at the end of the jetty. They put their coin into the
+            ferryman's hand, and step down into the boat, and sit, and let their shoulders
+            come down for what looks like the first time in months.
+      - type: response
+        data:
+          text: >-
+            The ferryman watches them settle and then turns their head, unhurried, under the
+            hood. "Well," they say. "It is time to take lost souls on their journey." One hand
+            comes out of the cloak and turns over, palm up, and stays there. "Are you not
+            coming as well?"
+
+  - id: look
+    requires:
+      - type: visited
+        data: { times: 2 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The river still going by, the green lanterns still going away down the bank, the ferry
+            still against the piles, and the ferryman still on the post with one hand out, palm
+            up, and no sign of getting tired of holding it there.
+
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The road ends at a jetty and the river goes on past it, wide and grey and without much
+            interest in either bank. A flat ferry lies against the piles on a chain, and there is
+            a notice nailed to the mooring post. All down the near bank, set about six feet apart
+            on posts driven into the mud, there are lanterns, and every one of them is burning the
+            same green as the sky. They go away downstream in a line until the fog takes them, and
+            they do not stop there: you can follow the glow of them out in the fog for as far as
+            there is fog to follow.
+      - type: response
+        data:
+          text: >-
+            The ferryman is sitting on the post with the pole across their knees in a long
+            black cloak, hooded, and has been watching you come down the last of the road
+            since well before you could see them. As you stop, one hand comes out of the
+            cloak and turns over, palm up, and stays there.
+
+characters:
+  - ferryman
+
+objects:
+  - id: ferry
+    synonyms: [boat, raft, punt]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Flat, tarred, and hauled over on a chain rather than rowed. It is riding high
+                and level against the piles and the water is not moving it at all, and there
+                is a bench along each side, and the benches are worn hollow.
+
+  - id: jetty
+    synonyms: [piles, planks, landing]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Six planks out over the water on piles that have been driven and driven again.
+                The last plank is worn through in one place, exactly where a foot goes when
+                somebody steps down into a boat.
+
+  - id: lanterns
+    synonyms: [lights, green lights, green lanterns, posts, line]
+    actions:
+      - id: look
+        requires:
+          - type: has-item
+            data: { object: lantern }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Old brass, on posts driven into the mud about six feet apart, running away
+                downstream in a line that the fog puts an end to long before the line does. Each
+                one is burning the same curdled green as the sky, steadily, and there is no oil in
+                any of them and no wick worth the name.
+          - type: response
+            data:
+              text: >-
+                You hold the one you carried off the tree stump up beside the nearest of them, and
+                there is no difference between the two at all - the same brass, the same wear, the
+                same green, and no shadow behind either. Somebody set yours down at the side of a
+                road for whoever came along next.
+
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Old brass, on posts driven into the mud about six feet apart, running away
+                downstream in a line that the fog puts an end to long before the line does. Each
+                one is burning the same curdled green as the sky, steadily, and there is no oil in
+                any of them and no wick worth the name.
+          - type: response
+            data:
+              text: >-
+                They are not lighting the water. They are too far apart for that and they are
+                turned the wrong way for it. They are set so that anybody who comes down to this
+                bank anywhere along its length can see which way the jetty is.
+
+  - id: river
+    synonyms: [water, current]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Wide, and grey, and going by at a good pace in the middle without any of the
+                sound that a river going by at a good pace makes. The green of the lanterns lies
+                out flat on the near water and does not reach the middle. Past that there is a long
+                way of nothing, and then the fog gets brighter, which is not the same thing as a
+                far bank.
+
+  - id: notice
+    synonyms: [sign, post, mooring post, board]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Nailed to the post, weathered down to the grain, and cut rather than painted
+                so that the weather has had nothing to take away. ONE COIN. It says nothing
+                else, and there is no room on it where anything else has ever been.
+
+  - id: river-fog
+    name: fog
+    synonyms: [sky, mist, air, cloud, green]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                It comes down onto the water about two hundred yards out and closes the river
+                off in both directions, so that what you are standing at is not a crossing on
+                a river but the only piece of river there is.
+
+navigation:
+  - id: north
+    synonyms: [ferry, boat, over, across]
+
+    requires:
+      - type: has-item
+        data: { object: coins }
+        failure:
+          triggers:
+            - type: response
+              data:
+                text: >-
+                  The hand stays out, palm up, and you have nothing in yours. You would want the
+                  coin actually in your hand before you tried those planks.
+
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 1 }
+        failure:
+          triggers:
+            - type: response
+              data:
+                text: >-
+                  The ferryman lays the pole across the gunwale without getting up, and does not
+                  take the hand back. "One coin," they say, out of the hood. "It is not a toll and
+                  I am not a tollman. It is the fare, and it has never once been anything else."
+
+      - type: flag
+        negate: true
+        data: { flag: soldier-sent }
+        failure:
+          triggers:
+            - type: response
+              data:
+                text: >-
+                  The soldier is aboard and settled and the chain is ready to run, and the hand is
+                  still out, palm up, and waiting. You would have to put the coin in it first.
+
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You step down onto the worn place in the last plank and into the boat, and it takes your
+            weight without shifting on the water at all. Then you put a coin into the waiting hand.
+            The bone closes on it without any warmth to it and without any cold either, and the coin
+            goes away somewhere inside the cloak.
+      - type: adjust-measure
+        data: { subject: coins, measure: quantity, by: -1 }
+      - type: response
+        data:
+          text: >-
+            They take the pole up, and look along the empty bench beside you, and then back up the
+            road you came down, which is empty too. "Quiet one tonight," they say. "Just the one lost
+            soul, then."
+      - type: response
+        data:
+          text: >-
+            You are out over the water before you have finished counting who else is aboard, and the
+            answer arrives with the rest of it, all at once, the way a thing you have always known
+            arrives when somebody finally asks. The lantern that threw no shadow. The fire you could
+            not feel. The doors with no handles on the outside and the well with no water in it and
+            the coin lying ready in the wall for whoever came along next. Nobody in that village asked
+            you your name, because nobody in that village needed it.
+      - type: response
+        data:
+          text: >-
+            And the headache. You have had it since you came to yourself in the wet grass at the side
+            of the road, and it is at the back of your head, and in all that time you have not once put
+            your hand up to touch it.
+      - type: response
+        data:
+          text: >-
+            You do it now. Four miles behind you, at the fourth milestone, a soldier is standing in the
+            fog with their pockets turned out, and will be standing there tomorrow, and the fog closes
+            over the last of the village before you have thought that all the way through.
+      - type: response
+        data:
+          text: The far bank is fog, and then it is not.
+      - type: end-game
+        data:
+          journal: paid the fare and crossed alone, and found out what the coin had always been for
+
+  - id: south
+    synonyms: [road, back, village]
+    triggers:
+      - type: response
+        data:
+          text: You turn your back on the water and go down the road.
+      - type: change-scene
+        data: { scene: road-north }

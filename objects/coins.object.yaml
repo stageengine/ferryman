@@ -1,0 +1,49 @@
+id: coins
+
+name: coins
+noun: plural
+synonyms: [coin, money, silver, penny, pennies]
+start: offstage
+portable: true
+
+measures:
+  - id: quantity
+    max: 3
+    start: 0
+    thresholds:
+      - from: 0
+        triggers:
+          - type: remove-object
+            data: { object: coins }
+      - from: 1
+
+actions:
+  - id: look
+    requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 3 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            Three of them, thin and worn smooth, with a century of somebody's wall dust
+            still on them. They do not chink together the way you expect them to.
+
+  - id: look
+    requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 2 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            Two left, thin and worn nearly featureless. Whatever was stamped on them has
+            been rubbed away by hands that are not yours.
+
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            One left. Thin, cold, and about the size of the thing you keep almost
+            remembering.

@@ -1,0 +1,342 @@
+id: ferryman
+
+name: ferryman
+synonyms: [boatman, poler, hood, them, they]
+
+actions:
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            Sitting on the mooring post with the pole across their knees in a long black cloak,
+            hooded, and the hood is deep enough and the light is poor enough that there is nothing
+            in it to look at. They are not wet. It is the only thing on this jetty that is not.
+
+      - type: response
+        data:
+          text: >-
+            The hands are bone. Not thin, not wasted - bone, dry and yellow and articulated, holding
+            a wet pole in a way that a hand holds things. There is no wound anywhere about them and
+            nothing has ever been done to them, and it comes to you that of everybody you have met
+            since the road, this is the only one who was never killed.
+
+  - id: ask
+    triggers:
+      - type: response
+        data:
+          text: '"One coin," they say, out of the hood, before you have asked anything at all.'
+
+  - id: ask
+    preposition: for
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have nothing to give you," they say. "That is not what this is. It goes the one way,
+            and it is one coin, and then I take you over."
+
+  - id: give
+    indirect: coins
+    requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 1 }
+      - type: flag
+        data: { flag: soldier-sent }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You put a coin into the waiting hand. The bone closes on it without any warmth to it and
+            without any cold either, and the coin goes away somewhere inside the cloak, and the hand
+            comes back out and steadies the gunwale for you.
+      - type: adjust-measure
+        data: { subject: coins, measure: quantity, by: -1 }
+      - type: response
+        data:
+          text: >-
+            You step down onto the worn place in the last plank and into the boat, and it takes your
+            weight without shifting on the water at all. The soldier moves along the bench without
+            being asked and sits with their hands on their knees, looking out over the bow, and their
+            shoulders are down.
+      - type: response
+        data:
+          text: >-
+            The chain begins to run through the ferryman's hands. "Lost souls," they say, to the water
+            rather than to either of you. "It is only ever the two sorts. The ones who know, and the
+            ones who are about to."
+      - type: response
+        data:
+          text: >-
+            Halfway over the village goes behind the rocks, and you understand it all at once, the way
+            you understand a thing you have always known and have only now been asked about. The lantern
+            that threw no shadow. The fire you could not feel. The doors with no handles on the outside
+            and the well with no water in it and the coin lying ready in the wall for whoever came along
+            next. Nobody in that village asked you your name, because nobody in that village needed it.
+      - type: response
+        data:
+          text: >-
+            And the headache. You have had it since you came to yourself in the wet grass at the side
+            of the road, and it is at the back of your head, and in all that time you have not once put
+            your hand up to touch it.
+      - type: response
+        data:
+          text: >-
+            You do it now. Then you put your hand back in your lap, and the soldier, who has seen you
+            do it, does not say anything, because there is nothing anybody says here that is any use.
+      - type: response
+        data:
+          text: The far bank is fog, and then it is not.
+      - type: end-game
+        data:
+          journal: paid the fare, took the lost soldier down with you, and found out what the coin had always been for
+
+  - id: give
+    indirect: coins
+    requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 1 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You put a coin into the waiting hand. The bone closes on it without any warmth to it and
+            without any cold either, and the coin goes away somewhere inside the cloak.
+      - type: adjust-measure
+        data: { subject: coins, measure: quantity, by: -1 }
+      - type: response
+        data:
+          text: >-
+            They stand, and take the pole up, and look along the empty bench and then back up the road
+            you came down, which is empty too. "Quiet one tonight," they say. "Just the one lost soul,
+            then."
+      - type: response
+        data:
+          text: >-
+            You are down on the bench and out over the water before you have finished counting who else
+            is aboard, and the answer arrives with the rest of it, all at once, the way a thing you have
+            always known arrives when somebody finally asks. The lantern that threw no shadow. The fire
+            you could not feel. The doors with no handles on the outside and the coin lying ready in the
+            wall for whoever came along next. Nobody in that village asked you your name, because nobody
+            in that village needed it.
+      - type: response
+        data:
+          text: >-
+            And the headache. You have had it since you came to yourself in the wet grass at the side of
+            the road, and it is at the back of your head, and in all that time you have not once put your
+            hand up to touch it.
+      - type: response
+        data:
+          text: >-
+            You do it now. Four miles behind you, at the fourth milestone, a soldier is standing in the
+            fog with their pockets turned out, and will be standing there tomorrow, and the fog closes
+            over the last of the village before you have thought that all the way through.
+      - type: response
+        data:
+          text: The far bank is fog, and then it is not.
+      - type: end-game
+        data:
+          journal: paid the fare and crossed alone, and found out what the coin had always been for
+
+  - id: give
+    indirect: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The hand does not close, because there is nothing to close on. "One coin," they say. "Go back
+            down and look under the wall. It is always in the wall."
+
+  - id: give
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The hand does not close and does not move. "One coin," they say. "Not that. It has never once
+            been anything else and I would not know what to do with it."
+
+knows:
+  - verb: tell
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I dare say," they say, without any interest at all. "One coin."
+
+  - requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 1 }
+      - type: performed
+        negate: true
+        data: { object: ferryman, action: ask }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "You have got it in your hand," they say, out of the hood, before you are within speaking
+            distance. "They nearly always have. Come on, then."
+
+  - requires:
+      - type: performed
+        negate: true
+        data: { object: ferryman, action: ask }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "No coin, no crossing," they say, before you have got close enough to ask. "Go back down and
+            look under the wall. It is always in the wall."
+
+  - topic: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "One, and it does not matter which one, and it does not matter whose," they say. "It is not
+            payment. Nobody has ever explained to me what it is. It is simply what is wanted, and I am
+            told to want it, and I do."
+
+  - topic: price
+    triggers:
+      - type: response
+        data:
+          text: '"One coin," they say. "There is a notice."'
+
+  - topic: soldier
+    requires:
+      - type: flag
+        data: { flag: soldier-sent }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Four months at a milestone," they say, and something in the hood moves that may be a nod.
+            "I have had them stand up there for years. It is not the fare that keeps them. It never is.
+            It is that nobody goes up and tells them."
+
+  - topic: soldier
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "There is one at the fourth stone," they say. "Been there since the spring. They will come
+            down when they come down. I do not go up roads and I do not fetch anybody."
+
+  - topic: dead
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Everybody who stands where you are standing is wearing how it happened," they say. "I have
+            not had to ask anybody a single question in a very long time." The pole shifts. "You are
+            wearing yours. You have not looked at it yet, and I am not going to be the one who points."
+
+  - topic: name
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have not got one and I have never wanted one," they say. "What would it be for? Nobody
+            comes twice."
+
+  - topic: ferry
+    triggers:
+      - type: response
+        data:
+          text: '"She goes over and she comes back," they say. "That is the whole of her, and the coming back is empty."'
+
+  - topic: river
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Wider than it was in the spring," they say. "It will be wider tomorrow. It has been getting
+            wider as long as I have been sat on this post and I have stopped expecting it to stop."
+
+  - topic: river-fog
+    triggers:
+      - type: response
+        data:
+          text: '"That is not weather," they say. "You will be through it in about a minute and you will see."'
+
+  - topic: village
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have never been down there and I never will," they say. "They come up to me. That is the
+            arrangement and it has held since before the wall came down."
+
+  - topic: barkeep
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The hood turns towards you properly, which it has not done before. "Still keeping the house,
+            are they," they say. "Yes. They will be." A pause, and the pole shifts on their knees. "That
+            one is not mine to carry and it is the only one I have ever wanted to."
+
+  - topic: carter
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Comes to the end of the planks and no further, and slides the load off the back, and turns
+            round," they say. "They have not once said good evening to me in all these years. I do not
+            hold it against them. They are doing the same work as me and they have not admitted it yet."
+
+  - topic: guard
+    triggers:
+      - type: response
+        data:
+          text: '"The gate," they say. "Same cloak, same terms. I could not tell you who gave us any of it."'
+
+  - topic: cart
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Under a cloth and lashed to two rings," they say. "The ones who come up on the cart do not
+            need telling anything. It is the ones who walk up who stand at milestones."
+
+  - topic: pass
+    triggers:
+      - type: response
+        data:
+          text: '"Paper is for the gate," they say. "There is no paper for this. There is a coin."'
+
+  - topic: lanterns
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "They go the whole way down," they say. "Both banks, as far as there is bank. I have
+            never lit one and I have never once seen one out."
+      - type: response
+        data:
+          text: >-
+            The pole shifts on their knees. "People do not always come down to the jetty. They come
+            down wherever the road they were on happens to stop, and then they stand there in the
+            fog with the water in front of them and no notion which way to turn. The lanterns are
+            so they can see." A pause. "It answers about half the time."
+
+  - topic: lantern
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "That one is ours," they say, and there is no accusation in it at all. "Off a post
+            somewhere down the bank, a long while ago. They get carried off, and they turn up at the
+            side of roads, and I stopped sending after them." The hood tilts a little. "It did its
+            work. You are here."
+
+  - topic: notice
+    triggers:
+      - type: response
+        data:
+          text: '"Cut, not painted," they say. "I did that myself. Painted ones want doing again."'
+
+  - triggers:
+      - type: response
+        data:
+          text: They say nothing, and the hand stays out, palm up, and the river goes by without a sound.

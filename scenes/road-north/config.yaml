@@ -1,0 +1,139 @@
+id: road-north
+
+meta:
+  title: The Road North
+
+actions:
+  - id: look
+    requires:
+      - type: character-here
+        negate: true
+        data: { character: soldier }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The road climbs between the rocks with the woods dropping away below it, and the
+            fog comes down to meet it so that you walk in a green room about thirty feet
+            across that travels with you. There is water somewhere ahead - a river, by the
+            sound, and not a small one.
+      - type: response
+        data:
+          text: >-
+            The fourth milestone stands at the side of the road with nobody beside it, and
+            the grass in front of it is worn down to the dirt in a patch about the size of a
+            person standing.
+
+  - id: look
+    requires:
+      - type: visited
+        data: { times: 2 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The road goes on climbing, and the water is still ahead, and the soldier is
+            still at the fourth milestone exactly as you left them.
+
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The road climbs between the rocks with the woods dropping away below it, and the
+            fog comes down to meet it so that you walk in a green room about thirty feet
+            across that travels with you. There is water somewhere ahead - a river, by the
+            sound, and not a small one.
+      - type: response
+        data:
+          text: >-
+            Something is standing very still at the side of the road a little way on, beside
+            a milestone. It is a soldier, in a coat that has been rained on for a long time
+            and no cloak over it, and they are facing north, and they have not moved since
+            you came round the bend.
+
+objects:
+  - id: milestone
+    synonyms: [stone, marker, fourth milestone]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                A squat stone with a IV cut into it and nothing else - no place named on
+                either face, and no distance. The grass in front of it is worn down to bare
+                dirt in one small patch, the way a doorstep wears.
+
+  - id: rocks
+    synonyms: [scree, crags, cutting]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Grey, and close, and steep enough on both sides to make this the only way
+                through. Nothing grows on them and nothing has come down off them in a long
+                time.
+
+  - id: crows
+    synonyms: [birds, crow]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Four of them along the top of the cutting, unhurried, entirely unbothered
+                about being watched. They are facing the same way the soldier is facing, and
+                they are waiting with the patience of birds who have learned that this road
+                pays.
+
+  - id: north-road
+    name: road
+    synonyms: [way, track, ruts]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Cart-wide, rutted, and going up and on towards the sound of the water. The
+                ruts are deep and there is only one set of them, going up and coming back,
+                over and over, until the two are the same rut.
+
+  - id: north-fog
+    name: fog
+    synonyms: [sky, mist, air, cloud, green]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Closer here than it was in the village, and the same green. It goes down into
+                the woods below the road and fills them level, like a flood that has come up
+                and then thought better of going anywhere.
+
+characters:
+  - soldier
+
+navigation:
+  - id: north
+    synonyms: [river, crossing, water, jetty]
+    triggers:
+      - type: response
+        data:
+          text: You go on up the road, and the sound of the water gets nearer.
+      - type: change-scene
+        data: { scene: river-crossing }
+
+  - id: south
+    synonyms: [village, back]
+    triggers:
+      - type: response
+        data:
+          text: You go back down the road towards the village.
+      - type: change-scene
+        data: { scene: village }

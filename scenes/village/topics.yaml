@@ -1,0 +1,11 @@
+topics:
+  - id: road
+
+  - id: north
+    knows:
+      - triggers:
+          - type: response
+            data:
+              text: >-
+                They glance up the road without turning their head much. "That one is not
+                for walking up," they say.

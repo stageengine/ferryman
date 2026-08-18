@@ -1,0 +1,272 @@
+id: village
+
+meta:
+  title: The Village
+
+actions:
+  - id: look
+    requires:
+      - type: visited
+        data: { times: 2 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The square again. The wall is still down, the brazier is still burning at the
+            gate with the guard beside it, and there is still light in the tavern window.
+            Nothing here has got on with anything while you were away.
+
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The village keeps a square, of a sort. A well stands in the middle of it with no
+            bucket and no rope. Cottages lean on one another down the east side with a
+            tavern set in between two of them, and the tavern is the only building with
+            light in it. To the west a wall gave up being a wall some years ago and has been
+            left exactly where it fell.
+      - type: response
+        data:
+          text: >-
+            To the north a gate stands across the road, and a guard is at it in a long black
+            cloak, warming their hands over a brazier. A black cart is drawn up against the
+            tavern wall with its shafts on the ground. Nothing is being mended, nothing is
+            being carried anywhere, and there are no children.
+
+objects:
+  - coins
+
+  - id: stones
+    synonyms: [wall, rubble, stone, rock, rocks, crumbling wall]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Knee-high where it still stands and a heap where it does not. Nobody carted
+                the fallen ones away and nobody ever will, and one or two have been turned
+                over more recently than the rest, and not by rain.
+
+      - id: use
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You tip one back on its edge and let it down again. There is nothing on top
+                of these stones worth having. Whatever this wall has kept, it has kept
+                underneath them.
+
+      - id: look
+        preposition: under
+        requires:
+          - type: performed
+            negate: true
+            data: { object: stones, action: look, preposition: under, times: 1 }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You tip one of the loose ones back on its edge. Underneath, pressed into the
+                dirt where it has been since somebody's wall was still a wall, is a coin.
+          - type: add-to-inventory
+            data: { object: coins, announce: true }
+          - type: adjust-measure
+            data: { subject: coins, measure: quantity, by: 1 }
+
+      - id: look
+        preposition: under
+        requires:
+          - type: performed
+            negate: true
+            data: { object: stones, action: look, preposition: under, times: 2 }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You work along the heap and turn another. There is a second one under it,
+                on its edge in the dirt, and it is the same coin in every particular - the
+                same wear, the same nothing stamped on it.
+          - type: add-to-inventory
+            data: { object: coins }
+          - type: adjust-measure
+            data: { subject: coins, measure: quantity, by: 1 }
+
+      - id: look
+        preposition: under
+        requires:
+          - type: performed
+            negate: true
+            data: { object: stones, action: look, preposition: under, times: 3 }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                A third, at the end of the heap, and this one is barely buried at all. It is
+                sitting on the dirt with the stone laid over it like a dish over a supper
+                somebody meant to come back for.
+          - type: add-to-inventory
+            data: { object: coins }
+          - type: adjust-measure
+            data: { subject: coins, measure: quantity, by: 1 }
+
+      - id: look
+        preposition: under
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go along the whole heap turning what will turn. Woodlice, wet dirt, and
+                the cold clean print of three stones you have already moved. The wall has
+                given up what it had.
+
+  - id: well
+    synonyms: [wellhead, shaft]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Stone, waist-high, with the bucket gone and the rope gone and the windlass
+                rusted solid. You lean over it and there is no smell of water, and no cold
+                coming up, and no sound when you speak into it.
+
+      - id: look
+        preposition: under
+        triggers:
+          - type: response
+            data:
+              text: Wet moss on the north side of the stone, and nothing behind it.
+
+  - id: brazier
+    synonyms: [coals, embers, fire]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Half a barrow of coal in an iron basket, burning low and orange and giving
+                out a good clear light. You put your hands towards it as the guard is doing,
+                and they do not get any warmer, and neither, you notice, do theirs.
+
+  - id: cart
+    synonyms: [waggon, wagon, shafts]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                A long flat cart, tarred black, with its shafts down and no horse anywhere
+                about. The bed of it is empty and swept, and there are two iron rings bolted
+                to the boards at the far end for lashing a load down.
+
+      - id: look
+        preposition: under
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Bare axle, no grease worth mentioning, and the boards worn smooth on the
+                underside where things have been slid off the back of it a great many times.
+
+  - id: gate
+    synonyms: [gateway, gatepost, chain]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Two posts and a chain across, at about the height of a cart's axle. It would
+                stop nothing that wanted to get past it, which tells you the chain is not
+                the part of this doing the work.
+
+  - id: tavern
+    synonyms: [inn, door, window]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Low, and lit, and a good deal more welcoming than the gate. The door is on
+                the latch and there is a slate hung by it with nothing chalked on the slate.
+
+  - id: houses
+    synonyms: [cottages, roofs, street]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Stone to the knee and timber above it, shut up for an evening that is not
+                coming. The doors have no handles on the outside. You try one and it is not
+                locked and it does not open either.
+
+  - id: village-fog
+    name: fog
+    synonyms: [sky, mist, air, cloud, green]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                It comes down to the rooftops and stops there, the same curdled green it was
+                on the road. The smoke from the chimneys goes up into it and does not spread
+                out, and does not thin, and does not stop going up.
+
+characters:
+  - guard
+
+navigation:
+  - id: north
+    synonyms: [gate, road]
+    requires:
+      - type: has-item
+        data: { object: pass }
+        failure:
+          triggers:
+            - type: response
+              data:
+                text: >-
+                  The guard steps off the brazier and into the gap without hurrying, because
+                  hurrying has never once been necessary. "Not without a pass," they say.
+                  "Nobody goes up that road but the cart."
+
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You hold the half-sheet out. The guard reads all of it, both stamps and the
+            figure in the CARRIED column, and hands it back and lifts the chain.
+      - type: response
+        data:
+          text: '"Mind how you go," they say. "It is further than it sounds."'
+      - type: set-flag
+        data: { flag: cleared-through }
+      - type: change-scene
+        data: { scene: road-north }
+
+  - id: east
+    synonyms: [tavern, inn, door]
+    triggers:
+      - type: response
+        data:
+          text: You push the door open and go in out of the cold.
+      - type: change-scene
+        data: { scene: tavern }
+
+  - id: south
+    synonyms: [back]
+    triggers:
+      - type: response
+        data:
+          text: You walk back down the road the way you came.
+      - type: change-scene
+        data: { scene: village-road }

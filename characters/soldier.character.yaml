@@ -1,0 +1,358 @@
+id: soldier
+
+name: soldier
+synonyms: [lost soldier, shade, figure, them, they]
+
+actions:
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            A soldier of the garrison, standing at the milestone facing north, in a coat that
+            has been rained on for a great many months and no cloak over it. They turn their
+            head when you speak and the turning takes a moment longer than it should, the way
+            a thing moves that has had to remember how.
+
+      - type: response
+        data:
+          text: >-
+            High on the back of the coat, between the shoulder blades, there is a hole about the
+            width of a thumb, and the cloth round it has gone stiff and dark and stayed that
+            way. It is on the back. They were walking away from whoever did it.
+
+  - id: ask
+    requires:
+      - type: flag
+        data: { flag: soldier-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Ask," they say, with the coin shut in their fist. "I have got nothing else to do
+            and I have got a very long time to do it in."
+
+  - id: ask
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Ask, then," they say. "You are the first thing to come up this road in four months
+            that was not the cart."
+
+  - id: ask
+    preposition: for
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have not got anything," they say, and turns their pockets out to show you, and
+            they are quite right.
+
+  - id: give
+    indirect: coins
+    requires:
+      - type: flag
+        data: { flag: soldier-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have got one," they say, and opens their fist to show you, and shuts it again.
+            "One is all it wants. You keep the rest of yours."
+
+  - id: give
+    indirect: coins
+    requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 2 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They take it and hold it in the flat of their hand, and look at it for a long time
+            without saying anything at all.
+      - type: response
+        data:
+          text: >-
+            "Four months I have been turning out these pockets," they say. "Four months. And it
+            was a coin. That is all it was." Their hand closes on it. "Thank you. I do not think
+            I have said that to anybody since the March."
+      - type: adjust-measure
+        data: { subject: coins, measure: quantity, by: -1 }
+      - type: set-flag
+        data: { flag: soldier-paid }
+
+  - id: give
+    indirect: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You get as far as holding it out. They look at it, and then at you, and put their hand
+            over yours and push it gently back. "No," they say. "Not your last one. I have stood
+            here four months and I can stand here another day. Yours is spoken for."
+
+  - id: give
+    triggers:
+      - type: response
+        data:
+          text: '"That is good of you," they say, "and it is not the thing I am short of."'
+
+knows:
+  - verb: tell
+    topic: ferry
+    requires:
+      - type: flag
+        data: { flag: soldier-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You tell them what is at the end of the road: the jetty, and the flat boat on its
+            chain, and the one in the black cloak sitting on the mooring post with a hand out,
+            and what the notice says, which is ONE COIN and nothing else.
+      - type: response
+        data:
+          text: >-
+            They listen to all of it without moving. "One coin," they say. "I have walked to
+            within the sound of that water forty times and turned round because I did not know
+            what I would be walking up to. That is all it was. Somebody to say it out loud."
+      - type: response
+        data:
+          text: >-
+            They step off the worn patch of grass, which takes an effort you can see, and stand
+            on the road proper for the first time since March. "Fourth milestone," they say,
+            looking back at it. "I have been calling that home." Then they go up the road, not
+            fast, and the fog takes them, and the crows go up off the cutting after them.
+      - type: set-flag
+        data: { flag: soldier-sent }
+      - type: move-object
+        data: { object: soldier, to: river-crossing }
+
+  - verb: tell
+    topic: ferry
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They listen carefully, all the way to the end. "A coin," they say, and their hands go
+            to their pockets before you have finished, and come out of them empty, the way they
+            have come out of them for four months. "Then I am no better off for knowing. But
+            thank you for coming up to say it."
+
+  - verb: tell
+    topic: ferryman
+    requires:
+      - type: flag
+        data: { flag: soldier-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You tell them about the black cloak on the mooring post, and the hand held out, and
+            the boat on its chain, and what the notice says.
+      - type: response
+        data:
+          text: >-
+            "One coin," they say. "That is it? That is the whole of it?" They look down at their
+            fist. "I have stood at this stone for four months because I did not know what was
+            being asked of me."
+      - type: response
+        data:
+          text: >-
+            They step off the worn grass onto the road, which takes a visible effort, and set off
+            north without looking back at the stone. The fog closes over them, and the crows go up
+            off the cutting and go after them.
+      - type: set-flag
+        data: { flag: soldier-sent }
+      - type: move-object
+        data: { object: soldier, to: river-crossing }
+
+  - verb: tell
+    triggers:
+      - type: response
+        data:
+          text: '"I dare say you are right," they say. "It does not get me off this stone."'
+
+  - requires:
+      - type: performed
+        negate: true
+        data: { object: soldier, action: ask }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They speak before you do, without turning round. "I know what I am," they say. "You do
+            not have to work up to it. I have known since March." A pause. "What I do not know is
+            where I am supposed to go."
+
+  - topic: dead
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Yes," they say, simply. "In the March, on this road, and I did not see it coming
+            because it came from behind me." They say it the way you would give a date. "It is
+            knowing it that is easy. It is the after that nobody tells you a single thing about."
+    knows:
+      - topic: soldier
+        open: true
+        triggers:
+          - type: response
+            data:
+              text: >-
+                "I stood up," they say, "and the road was the same road, and the fog was the same
+                fog, and I waited at this stone for somebody to come and tell me what happens now."
+          - type: response
+            data:
+              text: >-
+                "Nobody came. The cart goes past twice a day and does not stop. So I have stood
+                here, and I have got very good at standing here, and I would rather you did not
+                tell me that four months is not long, because I do not think it is going to stop
+                at four months."
+
+  - topic: ferry
+    requires:
+      - type: flag
+        data: { flag: soldier-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "There is water up there," they say. "I have got as far as hearing it, forty times."
+            The fist with the coin in it comes up slightly. "Tell me what is at the end of this
+            road and I will go. Tell me properly."
+
+  - topic: ferry
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "There is water somewhere up there," they say. "I have walked towards it as far as the
+            sound of it and come back to this stone every single time, because I do not know what
+            is at the end of it and I have nothing to offer anybody who is."
+
+  - topic: ferryman
+    triggers:
+      - type: response
+        data:
+          text: '"Is there somebody?" they say, and it is the first time they have sounded like a person. "Is there actually somebody there?"'
+
+  - topic: river
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I can hear it from here on a quiet day, and every day is quiet," they say. "It is a big
+            river. It does not sound like a big river. That is the part I do not care for."
+
+  - topic: coins
+    requires:
+      - type: flag
+        data: { flag: soldier-paid }
+    triggers:
+      - type: response
+        data:
+          text: '"I have got one," they say, and does not open the fist this time. "I am not putting it down."'
+
+  - topic: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have turned these pockets out every day since March," they say, and does it again
+            while you watch, and there is nothing in any of them. "Whatever it is that everybody
+            else finds, I did not come up this road with it."
+
+  - topic: milestone
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "The fourth," they say. "There is no place cut on it and no distance. I have had four
+            months to think about that and I have decided I am glad."
+
+  - topic: soldier
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Garrison," they say, and touches the coat without looking at it. "Four years of the
+            same weather with somebody who is still stood at that gate, and I have thought about
+            walking back down to them, and I would not know how to start."
+
+  - topic: guard
+    triggers:
+      - type: response
+        data:
+          text: >-
+            Something goes across their face. "They are still on the gate, then," they say. "Do not
+            tell them I am up here. No - tell them. I do not know. We came up together."
+
+  - topic: carter
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Twice a day, loaded going up and empty coming back," they say. "I have put my hand up
+            once. Only once." They look at the ruts. "They did not stop, and I have understood since
+            why not, and I have not put it up again."
+
+  - topic: cart
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "There is something under the cloth every time it goes up," they say, "and nothing under
+            it coming down, and it goes up at a walk. I worked out what it carries in about a week."
+
+  - topic: village
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I was quartered there four years and I could not tell you the name of it," they say. "I
+            have had four months to remember and there is no name to remember. There never was one."
+
+  - topic: north-fog
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "It has been that colour every day I have stood here," they say. "It does not thin in the
+            morning, because there is no morning. I stopped waiting for one in about the June."
+
+  - topic: crows
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "They came the first week and they have not gone," they say, without looking up at them.
+            "They are not waiting for me. They are waiting to see which way I go."
+
+  - topic: name
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They open their mouth, and stop, and try again. "It has gone," they say, and there is more
+            fright in it than in anything else they have said. "Four months. It was there in the March.
+            Ask me something else."
+
+  - topic: captain
+    triggers:
+      - type: response
+        data:
+          text: '"Dead since the spring," they say, "and the orders are not. Nobody has been up to tell the road about it."'
+
+  - topic: pass
+    triggers:
+      - type: response
+        data:
+          text: '"I had one," they say. "It went up the road with the rest of me. It is not the paper that stops you."'
+
+  - triggers:
+      - type: response
+        data:
+          text: They look back up the road, north, the way they were facing when you came round the bend.

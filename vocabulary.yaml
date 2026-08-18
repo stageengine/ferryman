@@ -1,0 +1,85 @@
+navigational: [walk, board, leave]
+conversational: [ask, talk, tell]
+
+recipient-first: [give]
+
+verbs:
+  - id: walk
+    synonyms: [go, head, enter]
+
+  - id: board
+    synonyms: [cross, embark]
+
+  - id: leave
+    synonyms: [exit, depart]
+
+  - id: look
+    synonyms: [examine, read, search]
+
+  - id: get
+    synonyms: [take, pick up, buy]
+
+  - id: drop
+    synonyms: [put down]
+
+  - id: use
+    synonyms: [push, touch, light, move, shift, lift, turn]
+
+  - id: give
+    synonyms: [hand, offer, pay]
+
+  - id: ask
+    synonyms: [question]
+
+  - id: tell
+
+  - id: talk
+    synonyms: [speak, carry on, go on]
+
+directions:
+  - id: north
+    synonyms: ['n']
+
+  - id: south
+    synonyms: ['s']
+
+  - id: east
+    synonyms: ['e']
+
+  - id: west
+    synonyms: ['w']
+
+articles:
+  - id: the
+    synonyms: []
+
+  - id: a
+    synonyms: []
+
+  - id: an
+    synonyms: []
+
+prepositions:
+  filler:
+    - id: to
+      synonyms: [towards, at]
+
+    - id: from
+      synonyms: [off]
+
+  significant:
+    - id: with
+      synonyms: [using]
+
+    - id: about
+      synonyms: []
+
+    - id: for
+      synonyms: []
+
+    - id: under
+      synonyms: [beneath, underneath]
+
+conjunctions:
+  coordinating: [and, then]
+  subordinating: []

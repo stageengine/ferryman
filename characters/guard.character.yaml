@@ -1,0 +1,296 @@
+id: guard
+
+name: guard
+synonyms: [sentry, soldier at the gate, cloak, them, they]
+
+actions:
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            A long black cloak, worn through at the cuffs, with plate armour underneath it
+            that has been kept up better than the cloak has. A long blade is sheathed at
+            their side and the whole length of it is rusted into the scabbard, and neither of
+            you mentions this.
+      - type: response
+        data:
+          text: >-
+            They have stood at this gate long enough to have taken its shape. While you are
+            looking at them they do not blink, and it takes you a moment to work out which of
+            the things you have just seen was the odd one.
+      - type: response
+        data:
+          text: >-
+            Low on the left side, under the arm where the plate stops, there is a split in the
+            steel about four inches across, driven inward. The cloak hangs into it. Nothing has
+            ever been done about it, and their own blade is rusted into the scabbard, and both
+            of those facts are the same fact.
+
+  - id: ask
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Ask, then," they say, still facing the road. "About the pass, if it is north you
+            have got in mind."
+
+  - id: ask
+    preposition: for
+    indirect: pass
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I read them. I do not write them," they say. "And I have never once been told
+            where they come from. Somebody in the tavern came down that road with one."
+
+  - id: ask
+    preposition: for
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "You would want to ask me about a thing rather than for it," they say. "I have
+            nothing of my own here."
+
+  - id: give
+    indirect: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They look at the coin in your hand for slightly too long, and then away, back to
+            the road. "No," they say. "That one is not mine and it is not for me. Keep hold of
+            it."
+
+  - id: give
+    triggers:
+      - type: response
+        data:
+          text: '"I am on the gate," they say, which is a no.'
+
+knows:
+  - verb: tell
+    topic: soldier
+    requires:
+      - type: flag
+        data: { flag: soldier-sent }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            For the first time they turn all the way round and look at you properly. "Gone
+            down, have they," they say. "Well. That is one off the road."
+      - type: response
+        data:
+          text: >-
+            They go back to the brazier and hold their hands out over it. "Four years that
+            one stood there," they say, to the coals. "I could see them from here."
+
+  - verb: tell
+    triggers:
+      - type: response
+        data:
+          text: '"You would have to know something I do not," they say, "and nobody does."'
+
+  - requires:
+      - type: performed
+        negate: true
+        data: { object: guard, action: ask }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "You will not be going north," they say, without taking their eyes off the road.
+            "Nobody goes up that road but the cart. A pass gets you through and nothing else
+            does, and I would not bother trying the woods."
+
+  - topic: pass
+    requires:
+      - type: has-item
+        data: { object: pass }
+    triggers:
+      - type: response
+        data:
+          text: '"Yours is in order," they say. "Go on up, then."'
+
+  - topic: pass
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Two stamps and a name and a figure in the last column," they say. "That is all I
+            am asked to see, and I see it maybe once a day."
+      - type: response
+        data:
+          text: >-
+            "The carter has one. It is in the tavern with the carter, and the carter is in the
+            tavern with a glass they have not got the price of."
+    knows:
+      - topic: captain
+        triggers:
+          - type: response
+            data:
+              text: >-
+                "Captain's orders, the road being shut," they say. "It is the phrase I was
+                given." A pause, and their hand goes flat over the coals. "I could not tell you
+                the name. I have said the word ten thousand times and there is nothing behind
+                it."
+        knows:
+          - topic: soldier
+            open: true
+            triggers:
+              - type: response
+                data:
+                  text: >-
+                    "One of ours went up that road and never came down," they say. "March, it
+                    was. They are still up there - fourth milestone, standing at it. I can see
+                    them from this gate on a thinner day than this."
+              - type: response
+                data:
+                  text: >-
+                    "I am not to leave the gate," they say, before you have asked. "And they
+                    are not to come back down it. That is the whole of the arrangement and
+                    neither of us made it."
+
+  - topic: soldier
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "There is one up the road, if that is who you mean," they say. "Standing at the
+            fourth milestone since March. Ask me about the pass and I will tell you how you
+            get to them."
+
+  - topic: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "There is money in that wall," they say, nodding west without looking. "There has
+            always been money in that wall. It turns up under the stones for whoever is here
+            and needs it, and I have stopped asking myself how."
+
+  - topic: ferry
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "There is a boat at the end of that road," they say. "It goes over and it comes
+            back empty. I have never seen it and I know it does."
+
+  - topic: ferryman
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Same cloak as this one," they say, and takes a fold of their own between two
+            fingers, and lets it drop. "Same as the carter's. We were all three given the
+            cloak. Nobody said what for."
+
+  - topic: river
+    triggers:
+      - type: response
+        data:
+          text: '"North, and wide, and not to be swum," they say. "Ask the carter. The carter goes."'
+
+  - topic: carter
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Comes down empty every day and goes up loaded," they say. "Or the other way about.
+            I have watched that cart a thousand times and I could not tell you which."
+
+  - topic: cart
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "It is lashed down under a cloth going up and it is not lashed down coming back,"
+            they say. "I lift the chain. I do not look in the cart."
+
+  - topic: barkeep
+    triggers:
+      - type: response
+        data:
+          text: '"Behind that counter as long as I have been at this gate," they say. "Longer, to hear them."'
+
+  - topic: village
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "It is quiet and it keeps," they say. "Nobody is born here and nobody buries
+            anybody, and if you had asked me that yesterday I would have said the same thing
+            and thought nothing of it."
+
+  - topic: name
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Mine?" They think about it, which takes a while. "Nobody has wanted it in a long
+            time." They go back to the road. "I have not asked you yours either. It is not a
+            thing that comes up."
+
+  - topic: dead
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "That is a garrison matter," they say, in a voice that has closed, and it is the
+            fastest they have said anything.
+
+  - topic: price
+    triggers:
+      - type: response
+        data:
+          text: '"Nothing of mine is for sale," they say. "Least of all the road."'
+
+  - topic: village.road
+    triggers:
+      - type: response
+        data:
+          text: '"North and south," they say. "One of them is shut, and you know which."'
+
+  - topic: village-fog
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They look up at it, briefly, the way you look at a ceiling. "It has been like that
+            since I came up," they say. "I could not tell you what it was like before, and I
+            have only just noticed that."
+
+  - topic: brazier
+    triggers:
+      - type: response
+        data:
+          text: '"Coal off the carts," they say. "Nobody has ever once asked me not to."'
+
+  - topic: gate
+    triggers:
+      - type: response
+        data:
+          text: '"It is a chain at axle height," they say. "Standing at it is the job. The chain is not the job."'
+
+  - topic: stones
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "The wall came down the winter before I came up," they say. "Nobody has missed it
+            and nobody has moved a stone of it but you."
+
+  - topic: tavern
+    triggers:
+      - type: response
+        data:
+          text: '"I am on duty," they say, in the voice of somebody who has been asked that before.'
+
+  - triggers:
+      - type: response
+        data:
+          text: They shrug, and go back to watching the road.

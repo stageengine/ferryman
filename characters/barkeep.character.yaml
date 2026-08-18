@@ -1,0 +1,353 @@
+id: barkeep
+
+name: barkeep
+synonyms: [keeper, landlord, publican, them, they]
+
+actions:
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            Wiping the same patch of counter they were wiping when you came in, in no danger
+            at all of running out of patience. No cloak on this one - shirtsleeves, and an
+            apron, and the sleeves rolled as though there were work coming.
+      - type: response
+        data:
+          text: >-
+            Above the collar there is a band round their throat, dark and quite even, of a
+            width you could put a rope to. Their collar is buttoned to the top and does not
+            cover it, and their head sits a little wrong on their neck, and they carry it
+            about their work without any sign of knowing it is there.
+
+  - id: ask
+    triggers:
+      - type: response
+        data:
+          text: '"Ask away," they say. "It is a pint or it is nothing, mind."'
+
+  - id: ask
+    preposition: for
+    indirect: beer
+    requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 1 }
+      - type: flag
+        negate: true
+        data: { flag: pint-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "One coin," they say, and the coin is off the counter before the glass is under
+            the tap. They pull it properly, with a pause, and set it in front of you.
+      - type: add-to-inventory
+        data: { object: beer }
+      - type: adjust-measure
+        data: { subject: coins, measure: quantity, by: -1 }
+      - type: set-flag
+        data: { flag: pint-paid }
+
+  - id: ask
+    preposition: for
+    indirect: beer
+    requires:
+      - type: flag
+        data: { flag: pint-paid }
+    triggers:
+      - type: response
+        data:
+          text: '"You have had your pint off me," they say. "One is what the house does."'
+
+  - id: ask
+    preposition: for
+    indirect: beer
+    triggers:
+      - type: response
+        data:
+          text: '"A pint is one coin," they say. "No freebies, and no slate for strangers."'
+
+  - id: ask
+    preposition: for
+    triggers:
+      - type: response
+        data:
+          text: '"I keep beer," they say. "Ask me for beer."'
+
+  - id: give
+    indirect: coins
+    requires:
+      - type: measure
+        data: { subject: coins, measure: quantity, min: 1 }
+      - type: flag
+        negate: true
+        data: { flag: pint-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They take it, look at it for exactly as long as that takes, and pull a pint without
+            being asked twice.
+      - type: add-to-inventory
+        data: { object: beer }
+      - type: adjust-measure
+        data: { subject: coins, measure: quantity, by: -1 }
+      - type: set-flag
+        data: { flag: pint-paid }
+
+  - id: give
+    indirect: coins
+    requires:
+      - type: flag
+        data: { flag: pint-paid }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They push it back across the counter with two fingers. "You have had your pint," they
+            say. "And I have got no use for a second one of those. None at all."
+
+  - id: give
+    indirect: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They look at your empty hand, and then at the slate over the taps, in case you had
+            forgotten which of the two of you was short.
+
+  - id: give
+    triggers:
+      - type: response
+        data:
+          text: '"Keep it," they say. "I keep beer. That is the arrangement."'
+
+knows:
+  - verb: tell
+    triggers:
+      - type: response
+        data:
+          text: '"Is that right," they say, and goes on wiping.'
+
+  - requires:
+      - type: performed
+        negate: true
+        data: { object: barkeep, action: ask }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Evening," they say, without stopping the cloth. "A pint is one coin, before you ask
+            me anything else."
+
+  - topic: river
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The cloth stops. It is the first time it has stopped. "I could not tell you," they
+            say. "I have never seen it."
+      - type: response
+        data:
+          text: '"Nine years in this village and I have never once been up that road."'
+    knows:
+      - id: barkeep-why-not
+        triggers:
+          - type: response
+            data:
+              text: >-
+                "I keep the house," they say. "That is what I do. Four tables and a fire and one
+                coin a pint, and whoever comes through that door gets served."
+          - type: response
+            data:
+              text: >-
+                They start the cloth again, slower. "It is not that I do not want to go up. I want
+                to go up the way you want to sit down."
+        knows:
+          - id: barkeep-not-the-pass
+            triggers:
+              - type: response
+                data:
+                  text: >-
+                    "You are thinking it is the pass," they say. "It is not the pass. Hallam would
+                    write me one on the back of a beer mat and the guard would lift the chain, and
+                    I have asked, and Hallam has offered, twice."
+              - type: response
+                data:
+                  text: '"It has never been the pass."'
+            knows:
+              - id: barkeep-the-coin
+                triggers:
+                  - type: response
+                    data:
+                      text: >-
+                        "It is the fare," they say. "You have got one. Everybody who comes through
+                        that door has got one, or turns one up in that wall out there inside the
+                        hour."
+                  - type: response
+                    data:
+                      text: >-
+                        They put both hands flat on the counter. "I have taken thousands of coins
+                        across this bar. Not one of them has ever been in that till the next
+                        morning. It is empty every day when I open up. I stopped counting and then
+                        I stopped looking."
+                knows:
+                  - id: barkeep-the-sentence
+                    triggers:
+                      - type: response
+                        data:
+                          text: >-
+                            "So I am not going," they say. "Not on the boat, not on the cart, not by
+                            the woods, and I have tried the woods. I am here, and I keep the house,
+                            and that is what was decided."
+                      - type: response
+                        data:
+                          text: >-
+                            "I did something." They say it evenly, the way you say a thing you have
+                            said to yourself a great many times. "I know I did something, because
+                            you do not get given this for nothing. And I have had nine years to get
+                            it back and it will not come, and I have come round to thinking that is
+                            the sentence rather than a part of it."
+                      - type: set-flag
+                        data: { flag: barkeep-told }
+                    knows:
+                      - id: barkeep-the-kindness
+                        triggers:
+                          - type: response
+                            data:
+                              text: >-
+                                They take the cloth up again, because the alternative is standing
+                                there with nothing in their hands. "You will go up," they say. "They
+                                all go up. The carter goes up and comes back and that is worse, I
+                                think, though they would tell you different."
+                          - type: response
+                            data:
+                              text: >-
+                                "Do me one kindness on your way. When you are out on that water, do
+                                not look back at this village." A shrug, and the cloth moves. "Nobody
+                                ever does. I would rather it stayed that way."
+                        knows:
+                          - id: barkeep-done
+                            triggers:
+                              - type: response
+                                data:
+                                  text: >-
+                                    They have said a good deal more than they meant to, and the cloth
+                                    has gone back to the one patch of counter it knows. "A pint is one
+                                    coin," they say, to the counter.
+
+  - topic: dead
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "You would have to ask me about the river," they say, "and I would rather you did not."
+            The cloth does not stop, quite. "And I would tell you, mind. I would tell you all of it."
+
+  - topic: price
+    triggers:
+      - type: response
+        data:
+          text: '"One coin a pint," they say. "It has been one coin a pint for nine years and it will be tomorrow."'
+
+  - topic: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Keep hold of it," they say, with something in it that is almost sharp. "Whatever else
+            you do in this village, do not lose it and do not spend it twice."
+
+  - topic: carter
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Hallam? In here since the rain started." They glance at the hearth. "Sits closer to
+            that fire than anybody who could feel it would need to."
+
+  - topic: pass
+    triggers:
+      - type: response
+        data:
+          text: '"Papers are Hallam''s department," they say. "I keep beer."'
+
+  - topic: guard
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "On that gate longer than I have been on this counter," they say, "and we have never
+            once had a drink together, and I have never once thought that was strange until just
+            now."
+
+  - topic: soldier
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "The one up the road." They nod at the shuttered window. "They came in here first, you
+            know. Before the road. Sat at that table and had one and went out and up, and that is
+            the last I saw of them, and it was March."
+
+  - topic: ferry
+    triggers:
+      - type: response
+        data:
+          text: '"I have never seen it," they say, "and I could draw it for you."'
+
+  - topic: ferryman
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Never been in," they say. "Not once in nine years, and this is the only house on the
+            road." They look at the taps. "I keep a glass back for them all the same. I could not
+            tell you why I started."
+
+  - topic: village
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "It keeps," they say. "Nothing comes in and nothing spoils and nobody is ever born, and
+            you get used to that faster than you would credit."
+
+  - topic: beer
+    triggers:
+      - type: response
+        data:
+          text: '"It is good," they say, and goes on wiping. "It is one coin. Both of those have always been true."'
+
+  - topic: name
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They think about it for a long moment, with the cloth still. "No," they say, at last.
+            "No, I do not believe I will. It is the one thing I have got left that nobody has asked
+            me for, and I would like to keep it that way."
+
+  - topic: captain
+    triggers:
+      - type: response
+        data:
+          text: '"Never heard of them," they say. "The guard says it like a prayer, mind. You have noticed that too."'
+
+  - topic: fire
+    triggers:
+      - type: response
+        data:
+          text: '"It has been in since before me," they say. "I have never laid it and I have never let it out."'
+
+  - topic: tavern.road
+    triggers:
+      - type: response
+        data:
+          text: '"North and south, and I have walked neither," they say. "Ask Hallam. Hallam drives it."'
+
+  - triggers:
+      - type: response
+        data:
+          text: >-
+            They look at you, and then at the taps, in case you had forgotten why people come in.

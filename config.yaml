@@ -1,0 +1,6 @@
+game:
+  id: ferryman
+  title: Ferryman
+  version: 0.7.0
+
+start: village-road

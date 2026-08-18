@@ -1,0 +1,168 @@
+id: village-road
+
+meta:
+  title: The Village Road
+
+actions:
+  - id: look
+    requires:
+      - type: visited
+        data: { times: 2 }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            Back on the road south of the village. The stump is where you left it, and the
+            sky has not moved at all.
+
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You come to yourself face down in wet grass at the side of a road, with a
+            headache and no account at all of how you got here. The sky over the trees is
+            the wrong colour - a low, curdled green, thick enough that it is neither
+            morning nor evening but something that has stopped being either.
+      - type: response
+        data:
+          text: >-
+            The road runs north towards a village whose far end you cannot make out. A few
+            paces off, a battered lantern stands on a tree stump, unlit, as though somebody
+            set it down there for whoever came along next.
+
+objects:
+  - id: lantern
+    synonyms: [lamp, brass lantern]
+    portable: true
+
+    actions:
+      - id: look
+        requires:
+          - type: flag
+            data: { flag: lantern-lit, value: true }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                An old brass lantern, lit, and throwing more light than its size suggests.
+                It throws no shadow of itself onto the stump, which you notice and then
+                stop noticing.
+
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                An old brass lantern, unlit. There is no oil in the reservoir and no wick
+                worth the name, and you are fairly sure it will light.
+
+      - id: use
+        requires:
+          - type: has-item
+            data: { object: lantern }
+            failure:
+              triggers:
+                - type: response
+                  data:
+                    text: You would need to be holding the lantern first.
+        once:
+          failure:
+            triggers:
+              - type: response
+                data:
+                  text: The lantern is already lit.
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You turn the little key and it catches at once, without a match, and burns
+                steadily on nothing at all.
+          - type: set-flag
+            data: { flag: lantern-lit, value: true }
+
+  - id: stump
+    synonyms: [tree stump, tree]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Cut flat a long time ago and going soft at the edges. The rings are there
+                to be counted, and you get to nine and lose your place, and start again,
+                and get to nine.
+
+  - id: path
+    synonyms: [track, road, way]
+    actions:
+      - id: look
+        requires:
+          - type: flag
+            data: { flag: lantern-lit, value: true }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Beaten flatter than the few feet living out here could manage on their own.
+                The lantern picks the ruts out of the fog for thirty feet ahead, which is
+                thirty feet more than you had.
+
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Beaten flatter than the few feet living out here could manage on their own.
+                Where it goes in under the trees the fog stands in it like water in a
+                ditch, and you can see nothing of what comes after.
+
+  - id: road-fog
+    name: fog
+    synonyms: [sky, mist, air, cloud, green]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Green, and low, and quite still. Fog moves. This does not. It sits on the
+                fields the way a lid sits on a pot, and the longer you look up into it the
+                more certain you are that there is nothing behind it - not the sun, not
+                weather, nothing at all.
+
+  - id: distant-village
+    name: roofs
+    synonyms: [houses, chimneys]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                A dozen roofs and a wall, further off than they look. Smoke is standing
+                straight up out of most of the chimneys and going nowhere, and there is
+                light in one window.
+
+navigation:
+  - id: north
+    synonyms: [village, roofs, lights]
+
+    requires:
+      - type: flag
+        data: { flag: lantern-lit, value: true }
+        failure:
+          triggers:
+            - type: response
+              data:
+                text: >-
+                  The fog stands in the road ahead like water in a ditch. You get four
+                  paces into it, lose which way is which, and come back to the stump
+                  without meaning to. You would want a light.
+
+    triggers:
+      - type: response
+        data:
+          text: You take the road north, the lantern swinging as you go.
+      - type: change-scene
+        data: { scene: village }

@@ -1,0 +1,16 @@
+id: pass
+
+name: half-sheet
+synonyms: [papers, permit, sheet]
+portable: true
+
+actions:
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            A half-sheet, stamped twice, made out for the carriage of goods north to the
+            crossing and back. The name on it is not yours. Under the second stamp,
+            somebody has written a figure in the column headed CARRIED, and it is a larger
+            figure than a cart that size would hold.

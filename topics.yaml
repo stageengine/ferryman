@@ -1,0 +1,32 @@
+topics:
+  - id: price
+    synonyms: [payment, cost, fare]
+
+  - id: pass
+
+  - id: coins
+
+  - id: ferry
+
+  - id: ferryman
+
+  - id: soldier
+
+  - id: carter
+
+  - id: guard
+
+  - id: barkeep
+
+  - id: river
+
+  - id: village
+
+  - id: cart
+
+  - id: name
+
+  - id: dead
+    synonyms: [death, dying]
+
+  - id: captain

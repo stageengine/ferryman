@@ -1,0 +1,219 @@
+id: tavern
+
+meta:
+  title: The Tavern
+
+actions:
+  - id: look
+    requires:
+      - type: flag
+        data: { flag: pass-given }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            The fire is still going and the barkeep has found another patch of counter to
+            wipe. The carter is settled in behind what is left of the pint with their boots
+            towards the hearth, and the look of somebody whose day has come good and who is
+            not going anywhere before tomorrow.
+
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            Four tables, a fire built up properly in the grate, and a bar with somebody
+            behind it wiping it down. The fire is the brightest thing in the village. You
+            cannot feel it from the door, and when you go closer you cannot feel it from
+            there either.
+      - type: response
+        data:
+          text: >-
+            A slate over the taps gives the price of a pint. At the table nearest the hearth
+            a carter sits in a long black cloak with a torn sleeve, holding an all but empty
+            flagon in both hands, and they were holding it in both hands before you opened
+            the door.
+
+objects:
+  - pass
+
+  - id: beer
+    name: pint
+    synonyms: [beer, ale, flagon, glass]
+    portable: true
+    actions:
+      - id: look
+        requires:
+          - type: has-item
+            data: { object: beer }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Yours, paid for, and going flat while you carry it about. You put your nose
+                to it out of habit and get nothing back at all.
+
+      - id: look
+        requires:
+          - type: flag
+            data: { flag: pint-paid }
+        triggers:
+          - type: response
+            data:
+              text: Drawn and standing on the counter under a cloth, waiting for you to pick it up.
+
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Not drawn yet. The taps are there, the glasses are there, and the slate over
+                them says what a pint costs in a hand that has written it a great many times.
+
+      - id: get
+        requires:
+          - type: has-item
+            data: { object: beer }
+        triggers:
+          - type: response
+            data:
+              text: You have it in your hand already.
+
+      - id: get
+        requires:
+          - type: flag
+            data: { flag: pint-paid }
+        triggers:
+          - type: response
+            data:
+              text: You pick the pint up off the counter.
+          - type: add-to-inventory
+            data: { object: beer }
+
+      - id: get
+        requires:
+          - type: measure
+            data: { subject: coins, measure: quantity, min: 1 }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You put a coin on the counter. The barkeep has it away and the glass under
+                the tap before you have finished letting go of it, and sets the pint in
+                front of you.
+          - type: add-to-inventory
+            data: { object: beer }
+          - type: adjust-measure
+            data: { subject: coins, measure: quantity, by: -1 }
+          - type: set-flag
+            data: { flag: pint-paid }
+
+      - id: get
+        triggers:
+          - type: response
+            data:
+              text: >-
+                The barkeep puts a hand flat on the counter without looking up. "One coin,"
+                they say. "No freebies, and no slate for strangers." You have not got one.
+
+  - id: bar
+    synonyms: [counter, taps, slate, prices]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Wiped well past the point of cleanliness, with a slate over the taps giving
+                the price of a pint. ONE COIN, it says, and underneath, in the same hand and
+                a good deal older: AND NOT A FARTHING'S CREDIT.
+
+      - id: look
+        preposition: under
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Crates, a bucket, and a smell of beer older than the bucket. Nothing anybody
+                has dropped.
+
+  - id: floor
+    synonyms: [floorboards, boards, sawdust, gaps]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Wide boards with wider gaps between them and a winter of sawdust trodden in.
+                Whatever gets dropped in this room does not get dropped far.
+
+  - id: fire
+    synonyms: [hearth, flames, grate]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Built up properly, with a good draw on it, and the best thing to look at in
+                the village by some distance. You hold a hand out flat to it, close enough
+                that you ought to snatch it back, and nothing happens to your hand.
+
+  - id: door
+    synonyms: [doorway, latch]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                On the latch, and letting in a draught the fire is not doing anything about.
+                The street is the other side of it.
+
+  - id: window
+    synonyms: [glass pane, panes, shutters]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                The fog outside has gone dark against it, so that the glass has stopped being a
+                window and started being a mirror, and gives you back the whole room the wrong way
+                round: the fire, the tables, the carter's boots, and somebody standing near the
+                door. You look away from it before you have finished, and could not afterwards say
+                why.
+
+  - id: tables
+    synonyms: [table, chairs, benches]
+    actions:
+      - id: look
+        triggers:
+          - type: response
+            data:
+              text: >-
+                Four of them, three going spare, and none standing quite level on these
+                boards. The three spare ones have been wiped and set as though for a trade
+                that is expected and has not come.
+
+      - id: look
+        preposition: under
+        triggers:
+          - type: response
+            data:
+              text: Sawdust, a bootnail, and the leg of somebody's chair.
+
+characters:
+  - barkeep
+  - carter
+
+navigation:
+  - id: west
+    synonyms: [out, outside, street, village, square]
+    triggers:
+      - type: response
+        data:
+          text: You go back out into the street.
+      - type: change-scene
+        data: { scene: village }

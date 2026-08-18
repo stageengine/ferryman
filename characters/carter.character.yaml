@@ -1,0 +1,331 @@
+id: carter
+
+name: Hallam
+noun: proper
+synonyms: [driver, boots, them, they]
+
+holds: [pass]
+
+actions:
+  - id: look
+    triggers:
+      - type: response
+        data:
+          text: >-
+            A long black cloak gone grey with dust, one sleeve torn from the cuff to the
+            elbow, and an all but empty flagon held in both hands the way you hold a thing you
+            are making last.
+      - type: response
+        data:
+          text: >-
+            Their boots are towards the hearth and steaming, which is the only thing in this
+            room behaving as though the fire were lit.
+      - type: response
+        data:
+          text: >-
+            The arm inside the torn sleeve is wrong. From the elbow to the wrist it is flat, and
+            dark, and it has the width of a cart rim in it, and they hold the flagon in both
+            hands regardless and the flat arm does its share of the holding.
+
+  - id: ask
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Ask away," they say. "I am not going anywhere while there is beer in this glass,
+            and there is not much."
+
+  - id: ask
+    preposition: for
+    indirect: pass
+    requires:
+      - type: flag
+        data: { flag: pass-given }
+    triggers:
+      - type: response
+        data:
+          text: '"You have got it," they say. "Go on up before I think better of it."'
+
+  - id: ask
+    preposition: for
+    indirect: pass
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Not a chance. I need it to do my route," they say, and their eye goes down to the
+            empty glass, and stays there a moment longer than it needs to.
+
+  - id: ask
+    preposition: for
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "You would want to ask me about a thing rather than for it," they say. "The pass,
+            if it is the road north you are after."
+
+  - id: give
+    indirect: beer
+    requires:
+      - type: has-item
+        data: { object: beer }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They slide the old flagon aside and take it in both hands and drink a third of it
+            without stopping, and set it down, and sit back with the look of somebody who has
+            just decided to be helpful.
+      - type: move-object
+        data: { object: beer, to: 'held:carter' }
+      - type: response
+        data:
+          text: >-
+            "Right," they say. "The river will not mind. It has never once minded, and I have
+            never once tried it." They pull a half-sheet out of the cloak, fold it once, and
+            push it across the boards. "Take it. I am not going up today. I will go up
+            tomorrow, and the depot will write me another if it comes to that."
+      - type: add-to-inventory
+        data: { object: pass }
+      - type: set-flag
+        data: { flag: pass-given }
+
+  - id: give
+    indirect: beer
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "That is a fine offer," they say, and looks at your empty hands, and then at the taps.
+            "You would have to be holding it."
+
+  - id: give
+    indirect: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have money," they say, without taking it. "What I have not got is a pint in
+            front of me. The keeper is the one you want, and the keeper does not do favours."
+
+  - id: give
+    triggers:
+      - type: response
+        data:
+          text: '"That is kind," they say, "and it is not a pint."'
+
+knows:
+  - verb: tell
+    topic: soldier
+    requires:
+      - type: flag
+        data: { flag: soldier-sent }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They stop with the glass halfway up. "Down to the boat," they say. "On their own
+            two feet." They put the glass down again. "That is not how it usually goes. That is
+            not how it goes at all."
+
+  - verb: tell
+    triggers:
+      - type: response
+        data:
+          text: '"I dare say," they say, and turn the glass round on the table.'
+
+  - requires:
+      - type: performed
+        negate: true
+        data: { object: carter, action: ask }
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Dry work, that road," they say, and turns the empty glass round on the table by
+            way of finishing the sentence.
+
+  - topic: pass
+    requires:
+      - type: flag
+        data: { flag: pass-given }
+    triggers:
+      - type: response
+        data:
+          text: '"You have it," they say. "Go north before you think about it too hard."'
+
+  - topic: pass
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I have one, and it is how I get a load up to the crossing," they say. "So it is not
+            a thing I hand about."
+      - type: response
+        data:
+          text: >-
+            They look at the glass. "Mind," they say, "the depot will write me another for the
+            asking, and a day either way has never mattered to anybody yet. Buy me a pint and
+            you can have this one."
+    knows:
+      - topic: price
+        triggers:
+          - type: response
+            data:
+              text: '"A pint," they say. "The big glass. The keeper will tell you what it costs, and it will be one coin."'
+
+      - topic: cart
+        open: true
+        triggers:
+          - type: response
+            data:
+              text: >-
+                "Loaded going up, empty coming down," they say. "Under a cloth, lashed to the
+                rings, and I do not undo the cloth at either end."
+          - type: response
+            data:
+              text: >-
+                They drink what is left, which is not much. "They are never heavy," they say.
+                "That is the thing nobody expects. Whatever a person weighs, it is not what
+                you get on the cart."
+
+  - topic: cart
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "It is a flat cart with two rings in the boards," they say. "It carries what it is
+            given and I do not look in it."
+
+  - topic: soldier
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "The one at the fourth stone." They nod slowly. "I go past them twice a day. They
+            have never once put a hand up, and I have never once stopped, and I could not tell
+            you which of those two is the worse."
+
+  - topic: ferry
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "I get to the jetty and no further," they say. "I slide the load off the back and I
+            turn the cart round and I come home. I have never set a foot on those planks and I
+            am not going to."
+
+  - topic: ferryman
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Never seen the face," they say. "Same cloak as this one, though." They pick at the
+            torn sleeve. "Mine is a bad copy. I have always known it was a copy and I have never
+            wondered who of."
+
+  - topic: river
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Wide, grey, quiet as a church," they say. "You would think a river that size would
+            make a noise. Stand on that jetty and you will hear yourself swallow."
+
+  - topic: guard
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Lifts the chain, drops the chain," they say. "Reads the sheet every single day like
+            it might have changed. I have started to find that restful."
+
+  - topic: barkeep
+    triggers:
+      - type: response
+        data:
+          text: '"Nine years behind that counter," they say. "Never once poured one on trust, and I have never once asked twice."'
+
+  - topic: beer
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "They keep it well here," they say. "It is the one thing in this village that is kept
+            at all." A pause. "I could not tell you what it tastes of. I have decided that is the
+            beer's business."
+
+  - topic: bar
+    triggers:
+      - type: response
+        data:
+          text: '"One coin a pint and not a farthing of argument in them," they say. "It is a good house."'
+
+  - topic: fire
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "It was lit when I got here," they say, "and I have sat as close to it as the seat
+            allows ever since." They look at their steaming boots. "It does something for the
+            boots. It has never done a thing for me."
+
+  - topic: village
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "It is on my route and it is where I stop," they say. "I could not tell you the name
+            of it. There is no board on the road either end, and I have been coming here for
+            years."
+
+  - topic: coins
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Everybody who comes through here has one," they say, "or finds one. I have stopped
+            thinking that is a coincidence and I have not started thinking anything else."
+
+  - topic: name
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Hallam," they say, and put a hand out, and take it back before you have got yours
+            up. "There. That is the first time I have said it out loud in a while."
+
+  - topic: captain
+    triggers:
+      - type: response
+        data:
+          text: '"Before my time on this road," they say, and leaves it there.'
+
+  - topic: dead
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They take a long time over the empty glass. "I carry what I am given and I go where the
+            sheet says," they say. "You are asking me what the load is. I have had years to ask
+            myself that and I have got very good at not."
+
+  - topic: price
+    triggers:
+      - type: response
+        data:
+          text: '"A pint," they say. "The big glass."'
+
+  - topic: tavern.road
+    triggers:
+      - type: response
+        data:
+          text: >-
+            "Ruts to the axle and one set of them, mine, up and back," they say. "It is the only
+            road I have ever driven that does not go anywhere except its own end."
+
+  - triggers:
+      - type: response
+        data:
+          text: They shake their head, and turn the glass round again.
