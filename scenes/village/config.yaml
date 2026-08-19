@@ -247,7 +247,7 @@ navigation:
             figure in the CARRIED column, and hands it back and lifts the chain.
       - type: response
         data:
-          text: '"Mind how you go," they say. "It's further than it sounds."'
+          text: '"Mind how you go," they say. "It''s further than it sounds."'
       - type: set-flag
         data: { flag: cleared-through }
       - type: change-scene

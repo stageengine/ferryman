@@ -25,7 +25,8 @@ actions:
     triggers:
       - type: response
         data:
-          text: '"One coin," they say, out of the hood, before you've asked anything at all.'
+          text: >-
+            '"One coin," they say, out of the hood, before you've asked anything at all.'
 
   - id: ask
     preposition: for
@@ -200,7 +201,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"One coin," they say. "There's a notice."'
+          text: '"One coin," they say. "There''s a notice."'
 
   - topic: soldier
     requires:
@@ -257,7 +258,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"That isn't weather," they say. "You will be through it in about a minute and you will see."'
+          text: '"That isn''t weather," they say. "You will be through it in about a minute and you will see."'
 
   - topic: village
     triggers:
@@ -303,7 +304,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"Paper is for the gate," they say. "There's no paper for this. There's a coin."'
+          text: '"Paper is for the gate," they say. "There''s no paper for this. There''s a coin."'
 
   - topic: lanterns
     triggers:

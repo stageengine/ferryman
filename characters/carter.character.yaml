@@ -23,8 +23,8 @@ actions:
       - type: response
         data:
           text: >-
-            One of his arms inside his tattered sleeves has wasted away. From the elbow to the wrist 
-            it's flat, white, and seemingly skeletal. They hold the flagon in both hands regardless 
+            One of his arms inside his tattered sleeves has wasted away. From the elbow to the wrist
+            it's flat, white, and seemingly skeletal. They hold the flagon in both hands regardless
             and the withered arm does its share of the holding.
 
   - id: ask
@@ -113,7 +113,7 @@ actions:
     triggers:
       - type: response
         data:
-          text: '"That's kind," they say, "and it's not a pint."'
+          text: '"That''s kind," they say, "and it''s not a pint."'
 
 knows:
   - verb: tell
@@ -153,7 +153,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"You've got it," they say. "Go north before you think about it too hard."'
+          text: '"You''ve got it," they say. "Go north before you think about it too hard."'
 
   - topic: pass
     triggers:
@@ -244,7 +244,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"Nine years behind that counter," they say. "Never once poured one on trust, and I've never once asked twice."'
+          text: '"Nine years behind that counter," they say. "Never once poured one on trust, and I''ve never once asked twice."'
 
   - topic: beer
     triggers:
@@ -259,7 +259,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"One coin a pint and not a farthing of argument in them," they say. "It's a good house."'
+          text: '"One coin a pint and not a farthing of argument in them," they say. "It''s a good house."'
 
   - topic: fire
     triggers:

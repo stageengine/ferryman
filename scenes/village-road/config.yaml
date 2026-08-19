@@ -20,7 +20,7 @@ actions:
       - type: response
         data:
           text: >-
-            You come to yourself face down in wet grass at the side of a road, with a
+            You find yourself face down in wet grass at the side of a road, with a
             headache and no account at all of how you got here. The sky over the trees is
             the wrong colour - a low, curdled green, thick enough that it's neither
             morning nor evening but something that has stopped being either.
@@ -156,7 +156,7 @@ navigation:
             - type: response
               data:
                 text: >-
-                  The fog stands in the road ahead like water in a ditch. You get four
+                  The fog hangs over the road ahead like a blanket of smoke. You get four
                   paces into it, lose which way is which, and come back to the stump
                   without meaning to. You would want a light.
 

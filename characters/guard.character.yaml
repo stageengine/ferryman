@@ -68,7 +68,8 @@ actions:
     triggers:
       - type: response
         data:
-          text: '"I'd on the gate," they say, which is a no.'
+          text: >-
+            '"I'd on the gate," they say, which is a no.'
 
 knows:
   - verb: tell
@@ -92,7 +93,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"You would have to know something I don't," they say, "and nobody does."'
+          text: '"You would have to know something I don''t," they say, "and nobody does."'
 
   - requires:
       - type: performed
@@ -120,7 +121,7 @@ knows:
       - type: response
         data:
           text: >-
-            "Two stamps and a name and a figure in the last column," they say. "That is all I'm 
+            "Two stamps and a name and a figure in the last column," they say. "That is all I'm
             asked to see, and I see it maybe once a day."
       - type: response
         data:
@@ -150,8 +151,8 @@ knows:
               - type: response
                 data:
                   text: >-
-                    "I'd not to leave the gate," they say, before you've asked. "And they're not 
-                    to come back down it. That is the whole of the arrangement and neither of us 
+                    "I'd not to leave the gate," they say, before you've asked. "And they're not
+                    to come back down it. That is the whole of the arrangement and neither of us
                     made it."
 
   - topic: soldier
@@ -215,7 +216,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"Behind that counter as long as I've been at this gate," they say. "Longer, to hear them."'
+          text: '"Behind that counter as long as I''ve been at this gate," they say. "Longer, to hear them."'
 
   - topic: village
     triggers:
@@ -261,7 +262,7 @@ knows:
         data:
           text: >-
             They look up at it, briefly, the way you look at a ceiling. "It's been like that
-            since I came up," they say. "I couldn't tell you what it was like before, and I've 
+            since I came up," they say. "I couldn't tell you what it was like before, and I've
             only just noticed that."
 
   - topic: brazier
@@ -274,7 +275,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"It's a chain at axle height," they say. "Standing at it's the job. The chain is not the job."'
+          text: '"It''s a chain at axle height," they say. "Standing at it''s the job. The chain is not the job."'
 
   - topic: stones
     triggers:
@@ -288,7 +289,8 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"I'd on duty," they say, in the voice of somebody who has been asked that before.'
+          text: >-
+            '"I'd on duty," they say, in the voice of somebody who has been asked that before.'
 
   - triggers:
       - type: response

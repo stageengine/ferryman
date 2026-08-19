@@ -24,7 +24,7 @@ actions:
     triggers:
       - type: response
         data:
-          text: '"Ask away," they say. "It's a pint or it's nothing, mind."'
+          text: '"Ask away," they say. "It''s a pint or it''s nothing, mind."'
 
   - id: ask
     preposition: for
@@ -57,7 +57,7 @@ actions:
     triggers:
       - type: response
         data:
-          text: '"You have had your pint," they say. "I'm not serving you another until that one is finished."'
+          text: '"You have had your pint," they say. "I''m not serving you another until that one is finished."'
 
   - id: ask
     preposition: for
@@ -149,7 +149,7 @@ knows:
             say. "I've never seen it."
       - type: response
         data:
-          text: '"Nine years in this village and I've never once been up that road."'
+          text: '"Nine years in this village and I''ve never once been up that road."'
     knows:
       - id: barkeep-why-not
         triggers:
@@ -174,7 +174,7 @@ knows:
                     I've asked, and Hallam has offered, twice."
               - type: response
                 data:
-                  text: '"It's never been the pass."'
+                  text: '"It''s never been the pass."'
             knows:
               - id: barkeep-the-coin
                 triggers:
@@ -248,7 +248,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"One coin a pint," they say. "It's been one coin a pint for nine years and it will be tomorrow."'
+          text: '"One coin a pint," they say. "It''s been one coin a pint for nine years and it will be tomorrow."'
 
   - topic: coins
     triggers:
@@ -294,7 +294,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"I've never seen it," they say, "and I could draw it for you."'
+          text: '"I''ve never seen it," they say, "and I could draw it for you."'
 
   - topic: ferryman
     triggers:
@@ -317,7 +317,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"It's good," they say, and goes on wiping. "It's one coin. Both of those have always been true."'
+          text: '"It''s good," they say, and goes on wiping. "It''s one coin. Both of those have always been true."'
 
   - topic: name
     triggers:
@@ -338,13 +338,13 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"It's been in since before me," they say. "I've never laid it and I've never let it out."'
+          text: '"It''s been in since before me," they say. "I''ve never laid it and I''ve never let it out."'
 
   - topic: tavern.road
     triggers:
       - type: response
         data:
-          text: '"North and south, and I've walked neither," they say. "Ask Hallam. Hallam drives it."'
+          text: '"North and south, and I''ve walked neither," they say. "Ask Hallam. Hallam drives it."'
 
   - triggers:
       - type: response
