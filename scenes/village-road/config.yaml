@@ -22,7 +22,7 @@ actions:
           text: >-
             You come to yourself face down in wet grass at the side of a road, with a
             headache and no account at all of how you got here. The sky over the trees is
-            the wrong colour - a low, curdled green, thick enough that it is neither
+            the wrong colour - a low, curdled green, thick enough that it's neither
             morning nor evening but something that has stopped being either.
       - type: response
         data:
