@@ -13,7 +13,7 @@ actions:
         data:
           text: >-
             The square again. The wall is still down, the brazier is still burning at the
-            gate with the guard beside it, and there is still light in the tavern window.
+            gate with the guard beside it, and there's still light in the tavern window.
             Nothing here has got on with anything while you were away.
 
   - id: look
@@ -54,7 +54,7 @@ objects:
           - type: response
             data:
               text: >-
-                You tip one back on its edge and let it down again. There is nothing on top
+                You tip one back on its edge and let it down again. There's nothing on top
                 of these stones worth having. Whatever this wall has kept, it has kept
                 underneath them.
 
@@ -85,8 +85,8 @@ objects:
           - type: response
             data:
               text: >-
-                You work along the heap and turn another. There is a second one under it,
-                on its edge in the dirt, and it is the same coin in every particular - the
+                You work along the heap and turn another. There's a second one under it,
+                on its edge in the dirt, and it's the same coin in every particular - the
                 same wear, the same nothing stamped on it.
           - type: add-to-inventory
             data: { object: coins }
@@ -103,7 +103,7 @@ objects:
           - type: response
             data:
               text: >-
-                A third, at the end of the heap, and this one is barely buried at all. It is
+                A third, at the end of the heap, and this one is barely buried at all. It's
                 sitting on the dirt with the stone laid over it like a dish over a supper
                 somebody meant to come back for.
           - type: add-to-inventory
@@ -130,7 +130,7 @@ objects:
             data:
               text: >-
                 Stone, waist-high, with the bucket gone and the rope gone and the windlass
-                rusted solid. You lean over it and there is no smell of water, and no cold
+                rusted solid. You lean over it and there's no smell of water, and no cold
                 coming up, and no sound when you speak into it.
 
       - id: look
@@ -161,7 +161,7 @@ objects:
             data:
               text: >-
                 A long flat cart, tarred black, with its shafts down and no horse anywhere
-                about. The bed of it is empty and swept, and there are two iron rings bolted
+                about. The bed of it's empty and swept, and there are two iron rings bolted
                 to the boards at the far end for lashing a load down.
 
       - id: look
@@ -194,7 +194,7 @@ objects:
             data:
               text: >-
                 Low, and lit, and a good deal more welcoming than the gate. The door is on
-                the latch and there is a slate hung by it with nothing chalked on the slate.
+                the latch and there's a slate hung by it with nothing chalked on the slate.
 
   - id: houses
     synonyms: [cottages, roofs, street]
@@ -205,7 +205,7 @@ objects:
             data:
               text: >-
                 Stone to the knee and timber above it, shut up for an evening that is not
-                coming. The doors have no handles on the outside. You try one and it is not
+                coming. The doors have no handles on the outside. You try one and it's not
                 locked and it does not open either.
 
   - id: village-fog
@@ -247,7 +247,7 @@ navigation:
             figure in the CARRIED column, and hands it back and lifts the chain.
       - type: response
         data:
-          text: '"Mind how you go," they say. "It is further than it sounds."'
+          text: '"Mind how you go," they say. "It's further than it sounds."'
       - type: set-flag
         data: { flag: cleared-through }
       - type: change-scene
