@@ -1,40 +1,41 @@
 navigational: [walk, board, leave]
 conversational: [ask, talk, tell]
 
-recipient-first: [give]
+recipient-first: [give, get]
 
 verbs:
   - id: walk
-    synonyms: [go, head, enter]
+    synonyms: [go, head, enter, visit, approach, travel, return, come, run, wander]
 
   - id: board
-    synonyms: [cross, embark]
+    synonyms: [cross, embark, sail, ride]
 
   - id: leave
     synonyms: [exit, depart]
 
   - id: look
-    synonyms: [examine, read, search]
+    synonyms: [examine, read, search, check, inspect, study, view, watch, observe, see, glance, survey, x, l]
 
   - id: get
-    synonyms: [take, pick up, buy]
+    synonyms: [take, pick up, pickup, pick, grab, collect, buy, purchase, order, acquire]
 
   - id: drop
-    synonyms: [put down]
+    synonyms: [put down, set down, discard, abandon]
 
   - id: use
-    synonyms: [push, touch, light, move, shift, lift, turn]
+    synonyms: [push, touch, light, move, shift, lift, turn, pull, open, press, raise, tip, sip, taste, sup, swallow]
 
   - id: give
-    synonyms: [hand, offer, pay]
+    synonyms: [hand, hand over, offer, pay, show]
 
   - id: ask
-    synonyms: [question]
+    synonyms: [question, enquire, inquire, quiz]
 
   - id: tell
+    synonyms: [inform, mention]
 
   - id: talk
-    synonyms: [speak, carry on, go on]
+    synonyms: [speak, carry on, go on, greet, hail, chat, converse, address, say hello, say hi, hello, hi]
 
 directions:
   - id: north
@@ -62,10 +63,19 @@ articles:
 prepositions:
   filler:
     - id: to
-      synonyms: [towards, at]
+      synonyms: [towards, toward, at]
 
     - id: from
-      synonyms: [off]
+      synonyms: [off, out of]
+
+    - id: in
+      synonyms: [inside, into, within]
+
+    - id: on
+      synonyms: [onto, upon]
+
+    - id: around
+      synonyms: [round]
 
   significant:
     - id: with
@@ -78,7 +88,7 @@ prepositions:
       synonyms: []
 
     - id: under
-      synonyms: [beneath, underneath]
+      synonyms: [beneath, underneath, below]
 
 conjunctions:
   coordinating: [and, then]

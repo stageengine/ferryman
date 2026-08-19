@@ -1,9 +1,18 @@
 id: ferryman
 
 name: ferryman
-synonyms: [boatman, poler, hood, them, they]
+synonyms: [boatman, poler, hood, pole, them, they]
 
 actions:
+  - id: walk
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You go down to the mooring post and stand over them. The hood does not come up. The
+            hand is still out, palm up, and near enough now that you could put something into it
+            without either of you having to reach.
+
   - id: look
     triggers:
       - type: response

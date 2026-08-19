@@ -1,9 +1,17 @@
 id: soldier
 
 name: soldier
-synonyms: [lost soldier, shade, figure, them, they]
+synonyms: [lost soldier, shade, figure, coat, them, they]
 
 actions:
+  - id: walk
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You come up beside them, close enough to be seen out of the corner of an eye, and are
+            not seen. The coat has been rained on for a long time and the road under them is dry.
+
   - id: look
     triggers:
       - type: response
@@ -46,7 +54,7 @@ actions:
       - type: response
         data:
           text: >-
-            "I've got nothing," they say, and turns their pockets out to show you, and
+            "I've got nothing," they say, and turn their pockets out to show you, and
             they are quite right.
 
   - id: give
@@ -58,7 +66,7 @@ actions:
       - type: response
         data:
           text: >-
-            "I've got one," they say, and opens their fist to show you, and shuts it again.
+            "I've got one," they say, and open their fist to show you, and shut it again.
             "One is all it wants. You keep the rest of yours."
 
   - id: give
@@ -254,15 +262,15 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"I''ve got one," they say, and does not open the fist this time. "I am not putting it down."'
+          text: '"I''ve got one," they say, and do not open the fist this time. "I am not putting it down."'
 
   - topic: coins
     triggers:
       - type: response
         data:
           text: >-
-            "I've turned these pockets out every day since March," they say, and does it again
-            while you watch, and there is nothing in any of them. "Whatever it's that everybody
+            "I've turned these pockets out every day since March," they say, and do it again
+            while you watch, and there is nothing in any of them. "Whatever it is that everybody
             else finds, I did not come up this road with it."
 
   - topic: milestone
@@ -278,7 +286,7 @@ knows:
       - type: response
         data:
           text: >-
-            "Garrison," they say, and touches the coat without looking at it. "Four years of the
+            "Garrison," they say, and touch the coat without looking at it. "Four years of the
             same weather with somebody who is still stood at that gate, and I've thought about
             walking back down to them, and I would not know how to start."
 

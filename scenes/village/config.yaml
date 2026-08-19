@@ -38,8 +38,20 @@ objects:
   - coins
 
   - id: stones
-    synonyms: [wall, rubble, stone, rock, rocks, crumbling wall]
+    synonyms: [
+      wall, rubble, stone, rock, rocks, crumbling wall, fallen wall, broken wall, stone wall,
+      wall rubble, wall stones, fallen stones, loose stones, heap, pile, pile of stones,
+    ]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You cross the square to the west side, where the wall stops being a wall. Standing
+                over it you can see that the heap has been gone through before - not tidied, and
+                not by rain, and not all that long ago.
+
       - id: look
         triggers:
           - type: response
@@ -124,6 +136,15 @@ objects:
   - id: well
     synonyms: [wellhead, shaft]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You walk out to the middle of the square and put both hands on the rim of the well.
+                Nothing is standing round it - no buckets, no pails, no wet ring on the stone - and
+                a well is the one thing in a village that always has somebody at it.
+
       - id: look
         triggers:
           - type: response
@@ -141,8 +162,17 @@ objects:
               text: Wet moss on the north side of the stone, and nothing behind it.
 
   - id: brazier
-    synonyms: [coals, embers, fire]
+    synonyms: [coals, embers, fire, iron basket]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go up to the gate and stand in at the brazier, near enough to share it. The
+                guard moves over to give you the room without being asked and without looking
+                round, and the two of you hold your hands out at the coal together.
+
       - id: look
         triggers:
           - type: response
@@ -153,8 +183,16 @@ objects:
                 and they do not get any warmer, and neither, you notice, do theirs.
 
   - id: cart
-    synonyms: [waggon, wagon, shafts]
+    synonyms: [waggon, wagon, shafts, black cart]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You walk round the cart. The shafts are down in the dirt with nothing between them,
+                and there is no horse in the square, and no hoofprint anywhere in it either.
+
       - id: look
         triggers:
           - type: response
@@ -176,6 +214,15 @@ objects:
   - id: gate
     synonyms: [gateway, gatepost, chain]
     actions:
+      - id: use
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You put a hand on the chain. The guard does not take theirs off the brazier and does
+                not look round. "It is not the chain," they say, to the road. "You know it is not
+                the chain."
+
       - id: look
         triggers:
           - type: response
@@ -186,7 +233,7 @@ objects:
                 the part of this doing the work.
 
   - id: tavern
-    synonyms: [inn, door, window]
+    synonyms: [inn, door, window, bar, pub, public house]
     actions:
       - id: look
         triggers:
@@ -197,8 +244,26 @@ objects:
                 the latch and there's a slate hung by it with nothing chalked on the slate.
 
   - id: houses
-    synonyms: [cottages, roofs, street]
+    synonyms: [cottages, roofs, street, doors]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go over to the cottages and along the front of them. Every door has the same
+                nothing where a handle should be, and behind every one of them there is no sound
+                at all of anybody moving about.
+
+      - id: use
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You get your fingers into the edge of one and pull. It comes away from the frame
+                about the width of a coin and stops there, without anything holding it and without
+                any give left in it, and shuts again when you let go.
+
       - id: look
         triggers:
           - type: response
@@ -254,7 +319,7 @@ navigation:
         data: { scene: road-north }
 
   - id: east
-    synonyms: [tavern, inn, door]
+    synonyms: [tavern, inn, door, bar, pub]
     triggers:
       - type: response
         data:

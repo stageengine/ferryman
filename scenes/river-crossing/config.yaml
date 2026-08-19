@@ -79,8 +79,17 @@ objects:
                 is a bench along each side, and the benches are worn hollow.
 
   - id: jetty
-    synonyms: [piles, planks, landing]
+    synonyms: [piles, planks, landing, last plank]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go down the bank to the head of the jetty and stop where the planks begin.
+                From here it is six paces to the end of them and one step down into the boat,
+                and the hand does not come back in while you are counting.
+
       - id: look
         triggers:
           - type: response
@@ -93,6 +102,15 @@ objects:
   - id: lanterns
     synonyms: [lights, green lights, green lanterns, posts, line]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You walk a little way along the bank to the nearest of the posts and stand in
+                under the green of it. It puts light on your hands and on the mud and none at all
+                on the water, and the next one down is already going into the fog.
+
       - id: look
         requires:
           - type: has-item
@@ -132,6 +150,15 @@ objects:
   - id: river
     synonyms: [water, current]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go to the edge of the bank. The water comes past a foot below you at the pace
+                of a river in a hurry, without the sound of one and without the smell of one, and
+                you find you have stepped back from it before you decided to.
+
       - id: look
         triggers:
           - type: response

@@ -54,8 +54,17 @@ actions:
 
 objects:
   - id: milestone
-    synonyms: [stone, marker, fourth milestone]
+    synonyms: [stone, marker, fourth milestone, fourth stone, patch, worn patch, grass]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go up to the fourth stone. The worn patch in front of it takes your boots
+                without any room left over on either side, which is the sort of thing you would
+                rather not have found out by standing in it.
+
       - id: look
         triggers:
           - type: response
@@ -66,8 +75,17 @@ objects:
                 dirt in one small patch, the way a doorstep wears.
 
   - id: rocks
-    synonyms: [scree, crags, cutting]
+    synonyms: [scree, crags, cutting, rock, bank]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You cross to the side of the cutting and put a hand flat on the rock. It is dry,
+                and it is not cold, and it is not warm, and after a moment you take the hand back
+                without having learned anything by it.
+
       - id: look
         triggers:
           - type: response
@@ -78,8 +96,16 @@ objects:
                 time.
 
   - id: crows
-    synonyms: [birds, crow]
+    synonyms: [birds, crow, rooks]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go a few paces up the bank towards them. They do not go up. They turn their
+                heads and watch you come, all four together, and then turn back to facing north.
+
       - id: look
         triggers:
           - type: response
@@ -94,6 +120,15 @@ objects:
     name: road
     synonyms: [way, track, ruts]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You stand out in the ruts. They go up towards the water and they come back down
+                towards the village, and they are the same rut, which means nothing has ever once
+                had to pull over for anything coming the other way.
+
       - id: look
         triggers:
           - type: response

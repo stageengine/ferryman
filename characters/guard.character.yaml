@@ -1,9 +1,18 @@
 id: guard
 
 name: guard
-synonyms: [sentry, soldier at the gate, cloak, them, they]
+synonyms: [sentry, sentinel, gatekeeper, watchman, soldier at the gate, cloak, them, they]
 
 actions:
+  - id: walk
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You walk up the road to the gate and stand at their shoulder. They do not turn. Up
+            close there is coal smoke on the cloak and nothing else on it at all, and the chain
+            across the road is at the height of a cart's axle and would stop nobody who meant it.
+
   - id: look
     triggers:
       - type: response
@@ -55,6 +64,16 @@ actions:
             nothing of my own here."
 
   - id: give
+    indirect: pass
+    triggers:
+      - type: response
+        data:
+          text: >-
+            They take it out of your hand and read all of it, both stamps and the figure in the
+            CARRIED column, and hand it back. "That is in order," they say, and their hand goes
+            to the chain and stops there. "Up you go, then, when you are ready for it."
+
+  - id: give
     indirect: coins
     triggers:
       - type: response
@@ -68,8 +87,7 @@ actions:
     triggers:
       - type: response
         data:
-          text: >-
-            '"I'd on the gate," they say, which is a no.'
+          text: '"I''m on the gate," they say, which is a no.'
 
 knows:
   - verb: tell
@@ -186,7 +204,7 @@ knows:
       - type: response
         data:
           text: >-
-            "Same cloak as this one," they say, and takes a fold of their own between two
+            "Same cloak as this one," they say, and take a fold of their own between two
             fingers, and lets it drop. "Same as the carter's. We were all three given the
             cloak. Nobody said what for."
 

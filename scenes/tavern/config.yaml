@@ -39,9 +39,92 @@ objects:
 
   - id: beer
     name: pint
-    synonyms: [beer, ale, flagon, glass]
+    synonyms: [beer, ale, flagon, glass, drink, jar, pint of beer]
     portable: true
     actions:
+      - id: get
+        indirect: carter
+        requires:
+          - type: has-item
+            data: { object: beer }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You have got one in your hand. Hallam is looking at it, and will go on looking at
+                it until somebody puts it down on the table in front of them.
+
+      - id: get
+        indirect: carter
+        requires:
+          - type: measure
+            data: { subject: coins, measure: quantity, min: 1 }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You put a coin on the counter and say who it is for. The barkeep pulls it properly,
+                sets it in front of you rather than carrying it over, and goes back to the cloth.
+                Hallam has not taken their eyes off it since the tap started.
+          - type: add-to-inventory
+            data: { object: beer }
+          - type: adjust-measure
+            data: { subject: coins, measure: quantity, by: -1 }
+          - type: set-flag
+            data: { flag: pint-paid }
+
+      - id: get
+        indirect: carter
+        triggers:
+          - type: response
+            data:
+              text: >-
+                The barkeep looks up from the cloth for once. "A pint is one coin," they say, "and
+                it is one coin whoever is drinking it."
+
+      - id: get
+        indirect: carter
+        preposition: for
+        requires:
+          - type: has-item
+            data: { object: beer }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You have got one in your hand. Hallam is looking at it, and will go on looking at
+                it until somebody puts it down on the table in front of them.
+
+      - id: get
+        indirect: carter
+        preposition: for
+        requires:
+          - type: measure
+            data: { subject: coins, measure: quantity, min: 1 }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You put a coin on the counter and say who it is for. The barkeep pulls it properly,
+                sets it in front of you rather than carrying it over, and goes back to the cloth.
+                Hallam has not taken their eyes off it since the tap started.
+          - type: add-to-inventory
+            data: { object: beer }
+          - type: adjust-measure
+            data: { subject: coins, measure: quantity, by: -1 }
+          - type: set-flag
+            data: { flag: pint-paid }
+
+      - id: get
+        indirect: carter
+        preposition: for
+        triggers:
+          - type: response
+            data:
+              text: >-
+                The barkeep looks up from the cloth for once. "A pint is one coin," they say, "and
+                it is one coin whoever is drinking it."
+
       - id: look
         requires:
           - type: has-item
@@ -78,6 +161,24 @@ objects:
           - type: response
             data:
               text: You have it in your hand already.
+
+      - id: use
+        requires:
+          - type: has-item
+            data: { object: beer }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You put it to your mouth. It is wet, and that is the whole of it - no cold, no
+                bitterness, nothing anybody would have thanked the keeper for. You set it down
+                with as much in it as it had when it came off the tap.
+
+      - id: use
+        triggers:
+          - type: response
+            data:
+              text: You would want it in your hand first.
 
       - id: get
         requires:
@@ -117,8 +218,25 @@ objects:
                 they say. "No freebies, and no slate for strangers." You have not got one.
 
   - id: bar
-    synonyms: [counter, taps, slate, prices]
+    synonyms: [counter, taps, slate, prices, bar top]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You cross to the bar and stand at it. The cloth moves along a foot to make room
+                for your elbows, which is more than anybody in this village has done for you so
+                far, and the barkeep is on the other side of it and in no hurry at all.
+
+      - id: leave
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You take a step back off the counter. The room is behind you and the street is
+                west, through the door, if it was the house you meant to leave.
+
       - id: look
         triggers:
           - type: response
@@ -151,6 +269,23 @@ objects:
   - id: fire
     synonyms: [hearth, flames, grate]
     actions:
+      - id: use
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You put your hand into it, in among the coals, and hold it there while you count.
+                Nothing happens to your hand. You take it out and turn it over and it is the same
+                hand it was.
+
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go the two steps to the hearth and stand as close to the grate as your boots
+                will allow. The light moves about on your hands. Nothing else about them changes.
+
       - id: look
         triggers:
           - type: response
@@ -163,6 +298,14 @@ objects:
   - id: door
     synonyms: [doorway, latch]
     actions:
+      - id: use
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You lift the latch and the draught comes in round your legs, and the square is out
+                there with the brazier burning at the far end of it. West, whenever you want it.
+
       - id: look
         triggers:
           - type: response
@@ -188,6 +331,14 @@ objects:
   - id: tables
     synonyms: [table, chairs, benches]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go along the three spare tables. Every one of them is wiped, and set, and
+                pushed in, and none of them has been sat at.
+
       - id: look
         triggers:
           - type: response
@@ -210,7 +361,7 @@ characters:
 
 navigation:
   - id: west
-    synonyms: [out, outside, street, village, square]
+    synonyms: [out, outside, street, village, square, tavern, inn, pub, house, door]
     triggers:
       - type: response
         data:

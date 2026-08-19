@@ -1,9 +1,17 @@
 id: barkeep
 
 name: barkeep
-synonyms: [keeper, landlord, publican, them, they]
+synonyms: [keeper, barman, barmaid, bartender, landlord, innkeeper, publican, host, them, they]
 
 actions:
+  - id: walk
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You step up to the counter in front of them. The cloth does not stop, and they wait
+            with the patience of somebody who has been waiting nine years, which is what they are.
+
   - id: look
     triggers:
       - type: response
@@ -127,7 +135,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"Is that right," they say, and goes on wiping.'
+          text: '"Is that right," they say, and go on wiping.'
 
   - requires:
       - type: performed
@@ -317,7 +325,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"It''s good," they say, and goes on wiping. "It''s one coin. Both of those have always been true."'
+          text: '"It''s good," they say, and go on wiping. "It''s one coin. Both of those have always been true."'
 
   - topic: name
     triggers:

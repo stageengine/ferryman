@@ -2,11 +2,20 @@ id: carter
 
 name: Hallam
 noun: proper
-synonyms: [driver, boots, them, they]
+synonyms: [driver, boots, torn sleeve, them, they]
 
 holds: [pass]
 
 actions:
+  - id: walk
+    triggers:
+      - type: response
+        data:
+          text: >-
+            You come over to the table nearest the hearth and stand where the light off the fire
+            falls on it. They look up, and move the flagon an inch to one side, as though making
+            room for a glass that is coming.
+
   - id: look
     triggers:
       - type: response
@@ -23,7 +32,7 @@ actions:
       - type: response
         data:
           text: >-
-            One of his arms inside his tattered sleeves has wasted away. From the elbow to the wrist
+            One of the arms inside their tattered sleeves has wasted away. From the elbow to the wrist
             it's flat, white, and seemingly skeletal. They hold the flagon in both hands regardless
             and the withered arm does its share of the holding.
 
@@ -97,7 +106,7 @@ actions:
       - type: response
         data:
           text: >-
-            "That's a fine offer," they say, and looks at your empty hands, and then at the taps.
+            "That's a fine offer," they say, and look at your empty hands, and then at the taps.
             "You would have to be holding it."
 
   - id: give
@@ -143,7 +152,7 @@ knows:
       - type: response
         data:
           text: >-
-            "Dry work, that road," they say, and turns the empty glass round on the table by
+            "Dry work, that road," they say, and turn the empty glass round on the table by
             way of finishing the sentence.
 
   - topic: pass
@@ -299,7 +308,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"Before my time on this road," they say, and leaves it there.'
+          text: '"Before my time on this road," they say, and leave it there.'
 
   - topic: dead
     triggers:

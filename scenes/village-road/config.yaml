@@ -37,6 +37,25 @@ objects:
     portable: true
 
     actions:
+      - id: walk
+        requires:
+          - type: has-item
+            negate: true
+            data: { object: lantern }
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You go the few paces over to the stump and stand looking down at it. It has been set
+                square in the middle of the flat cut, upright, with the key turned to the off - which
+                is not how a thing gets left by somebody who was finished with it.
+
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: You have it with you. Wherever you go, it goes.
+
       - id: look
         requires:
           - type: flag
@@ -84,6 +103,15 @@ objects:
   - id: stump
     synonyms: [tree stump, tree]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You walk over to the stump and put a hand on the cut of it. The wood is wet and
+                cold and gives a little under your thumb, and the grass round the foot of it has
+                not been walked down by anybody but you.
+
       - id: look
         triggers:
           - type: response
@@ -94,8 +122,17 @@ objects:
                 and get to nine.
 
   - id: path
-    synonyms: [track, road, way]
+    synonyms: [track, road, way, ruts]
     actions:
+      - id: walk
+        triggers:
+          - type: response
+            data:
+              text: >-
+                You step out of the grass into the middle of the road. It runs north into the fog
+                and south into a good deal more of it, and the only thing to be said for the north
+                is that there is a village at the end of it.
+
       - id: look
         requires:
           - type: flag
@@ -133,7 +170,7 @@ objects:
 
   - id: distant-village
     name: roofs
-    synonyms: [houses, chimneys]
+    synonyms: [houses, chimneys, smoke]
     actions:
       - id: look
         triggers:
