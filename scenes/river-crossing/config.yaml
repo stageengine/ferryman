@@ -26,7 +26,7 @@ actions:
         data:
           text: >-
             The ferryman watches them settle and then turns their head, unhurried, under the
-            hood. "Well," they say. "It is time to take lost souls on their journey." One hand
+            hood. "Well," they say. "It's time to take lost souls on their journey." One hand
             comes out of the cloak and turns over, palm up, and stays there. "Are you not
             coming as well?"
 
@@ -74,7 +74,7 @@ objects:
           - type: response
             data:
               text: >-
-                Flat, tarred, and hauled over on a chain rather than rowed. It is riding high
+                Flat, tarred, and hauled over on a chain rather than rowed. It's riding high
                 and level against the piles and the water is not moving it at all, and there
                 is a bench along each side, and the benches are worn hollow.
 
@@ -165,7 +165,7 @@ objects:
             data:
               text: >-
                 It comes down onto the water about two hundred yards out and closes the river
-                off in both directions, so that what you are standing at is not a crossing on
+                off in both directions, so that what you're standing at is not a crossing on
                 a river but the only piece of river there is.
 
 navigation:
@@ -191,8 +191,8 @@ navigation:
               data:
                 text: >-
                   The ferryman lays the pole across the gunwale without getting up, and does not
-                  take the hand back. "One coin," they say, out of the hood. "It is not a toll and
-                  I am not a tollman. It is the fare, and it has never once been anything else."
+                  take the hand back. "One coin," they say, out of the hood. "It's not a toll and
+                  I am not a tollman. It's the fare, and it has never once been anything else."
 
       - type: flag
         negate: true
@@ -224,7 +224,7 @@ navigation:
       - type: response
         data:
           text: >-
-            You are out over the water before you have finished counting who else is aboard, and the
+            You're out over the water before you have finished counting who else is aboard, and the
             answer arrives with the rest of it, all at once, the way a thing you have always known
             arrives when somebody finally asks. The lantern that threw no shadow. The fire you could
             not feel. The doors with no handles on the outside and the well with no water in it and
@@ -234,7 +234,7 @@ navigation:
         data:
           text: >-
             And the headache. You have had it since you came to yourself in the wet grass at the side
-            of the road, and it is at the back of your head, and in all that time you have not once put
+            of the road, and it's at the back of your head, and in all that time you have not once put
             your hand up to touch it.
       - type: response
         data:
@@ -244,7 +244,7 @@ navigation:
             over the last of the village before you have thought that all the way through.
       - type: response
         data:
-          text: The far bank is fog, and then it is not.
+          text: The far bank is fog, and then it's not.
       - type: end-game
         data:
           journal: paid the fare and crossed alone, and found out what the coin had always been for
