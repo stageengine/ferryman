@@ -21,7 +21,7 @@ actions:
         data:
           text: >-
             The fourth milestone stands at the side of the road with nobody beside it, and
-            the grass in front of it is worn down to the dirt in a patch about the size of a
+            the grass in front of it's worn down to the dirt in a patch about the size of a
             person standing.
 
   - id: look
@@ -48,7 +48,7 @@ actions:
         data:
           text: >-
             Something is standing very still at the side of the road a little way on, beside
-            a milestone. It is a soldier, in a coat that has been rained on for a long time
+            a milestone. It's a soldier, in a coat that has been rained on for a long time
             and no cloak over it, and they are facing north, and they have not moved since
             you came round the bend.
 
@@ -62,7 +62,7 @@ objects:
             data:
               text: >-
                 A squat stone with a IV cut into it and nothing else - no place named on
-                either face, and no distance. The grass in front of it is worn down to bare
+                either face, and no distance. The grass in front of it's worn down to bare
                 dirt in one small patch, the way a doorstep wears.
 
   - id: rocks
