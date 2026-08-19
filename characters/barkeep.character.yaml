@@ -16,15 +16,15 @@ actions:
         data:
           text: >-
             Above the collar there is a band round their throat, dark and quite even, of a
-            width you could put a rope to. Their collar is buttoned to the top and does not
-            cover it, and their head sits a little wrong on their neck, and they carry it
-            about their work without any sign of knowing it is there.
+            width of a fishing rope. Their collar is buttoned to the top and doesn't
+            cover it, and their head sits a little off on their neck, and they carry it
+            about their work without any sign of knowing it's there.
 
   - id: ask
     triggers:
       - type: response
         data:
-          text: '"Ask away," they say. "It is a pint or it is nothing, mind."'
+          text: '"Ask away," they say. "It's a pint or it's nothing, mind."'
 
   - id: ask
     preposition: for
@@ -57,7 +57,7 @@ actions:
     triggers:
       - type: response
         data:
-          text: '"You have had your pint off me," they say. "One is what the house does."'
+          text: '"You have had your pint," they say. "I'm not serving you another until that one is finished."'
 
   - id: ask
     preposition: for
@@ -72,7 +72,7 @@ actions:
     triggers:
       - type: response
         data:
-          text: '"I keep beer," they say. "Ask me for beer."'
+          text: '"I trade beer for coin," they say. "Ask me for beer."'
 
   - id: give
     indirect: coins
@@ -105,7 +105,7 @@ actions:
         data:
           text: >-
             They push it back across the counter with two fingers. "You have had your pint," they
-            say. "And I have got no use for a second one of those. None at all."
+            say. "And I've got no use for a second one of those. None at all."
 
   - id: give
     indirect: coins
@@ -145,11 +145,11 @@ knows:
       - type: response
         data:
           text: >-
-            The cloth stops. It is the first time it has stopped. "I could not tell you," they
-            say. "I have never seen it."
+            The cloth stops. It's the first time it has stopped. "I could not tell you," they
+            say. "I've never seen it."
       - type: response
         data:
-          text: '"Nine years in this village and I have never once been up that road."'
+          text: '"Nine years in this village and I've never once been up that road."'
     knows:
       - id: barkeep-why-not
         triggers:
@@ -161,7 +161,7 @@ knows:
           - type: response
             data:
               text: >-
-                They start the cloth again, slower. "It is not that I do not want to go up. I want
+                They start the cloth again, slower. "It's not that I do not want to go up. I want
                 to go up the way you want to sit down."
         knows:
           - id: barkeep-not-the-pass
@@ -169,27 +169,27 @@ knows:
               - type: response
                 data:
                   text: >-
-                    "You are thinking it is the pass," they say. "It is not the pass. Hallam would
+                    "You are thinking it's the pass," they say. "It's not the pass. Hallam would
                     write me one on the back of a beer mat and the guard would lift the chain, and
-                    I have asked, and Hallam has offered, twice."
+                    I've asked, and Hallam has offered, twice."
               - type: response
                 data:
-                  text: '"It has never been the pass."'
+                  text: '"It's never been the pass."'
             knows:
               - id: barkeep-the-coin
                 triggers:
                   - type: response
                     data:
                       text: >-
-                        "It is the fare," they say. "You have got one. Everybody who comes through
+                        "It's the fare," they say. "You have got one. Everybody who comes through
                         that door has got one, or turns one up in that wall out there inside the
                         hour."
                   - type: response
                     data:
                       text: >-
-                        They put both hands flat on the counter. "I have taken thousands of coins
+                        They put both hands flat on the counter. "I've taken thousands of coins
                         across this bar. Not one of them has ever been in that till the next
-                        morning. It is empty every day when I open up. I stopped counting and then
+                        morning. It's empty every day when I open up. I stopped counting and then
                         I stopped looking."
                 knows:
                   - id: barkeep-the-sentence
@@ -198,15 +198,15 @@ knows:
                         data:
                           text: >-
                             "So I am not going," they say. "Not on the boat, not on the cart, not by
-                            the woods, and I have tried the woods. I am here, and I keep the house,
+                            the woods, and I've tried the woods. I am here, and I keep the house,
                             and that is what was decided."
                       - type: response
                         data:
                           text: >-
                             "I did something." They say it evenly, the way you say a thing you have
                             said to yourself a great many times. "I know I did something, because
-                            you do not get given this for nothing. And I have had nine years to get
-                            it back and it will not come, and I have come round to thinking that is
+                            you do not get given this for nothing. And I've had nine years to get
+                            it back and it will not come, and I've come round to thinking that is
                             the sentence rather than a part of it."
                       - type: set-flag
                         data: { flag: barkeep-told }
@@ -242,13 +242,13 @@ knows:
         data:
           text: >-
             "You would have to ask me about the river," they say, "and I would rather you did not."
-            The cloth does not stop, quite. "And I would tell you, mind. I would tell you all of it."
+            The cloth doesn't stop, quite. "And I would tell you, mind. I would tell you all of it."
 
   - topic: price
     triggers:
       - type: response
         data:
-          text: '"One coin a pint," they say. "It has been one coin a pint for nine years and it will be tomorrow."'
+          text: '"One coin a pint," they say. "It's been one coin a pint for nine years and it will be tomorrow."'
 
   - topic: coins
     triggers:
@@ -277,8 +277,8 @@ knows:
       - type: response
         data:
           text: >-
-            "On that gate longer than I have been on this counter," they say, "and we have never
-            once had a drink together, and I have never once thought that was strange until just
+            "On that gate longer than I've been on this counter," they say, "and we have never
+            once had a drink together, and I've never once thought that was strange until just
             now."
 
   - topic: soldier
@@ -294,7 +294,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"I have never seen it," they say, "and I could draw it for you."'
+          text: '"I've never seen it," they say, "and I could draw it for you."'
 
   - topic: ferryman
     triggers:
@@ -317,7 +317,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"It is good," they say, and goes on wiping. "It is one coin. Both of those have always been true."'
+          text: '"It's good," they say, and goes on wiping. "It's one coin. Both of those have always been true."'
 
   - topic: name
     triggers:
@@ -325,7 +325,7 @@ knows:
         data:
           text: >-
             They think about it for a long moment, with the cloth still. "No," they say, at last.
-            "No, I do not believe I will. It is the one thing I have got left that nobody has asked
+            "No, I do not believe I will. It's the one thing I've got left that nobody has asked
             me for, and I would like to keep it that way."
 
   - topic: captain
@@ -338,13 +338,13 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"It has been in since before me," they say. "I have never laid it and I have never let it out."'
+          text: '"It's been in since before me," they say. "I've never laid it and I've never let it out."'
 
   - topic: tavern.road
     triggers:
       - type: response
         data:
-          text: '"North and south, and I have walked neither," they say. "Ask Hallam. Hallam drives it."'
+          text: '"North and south, and I've walked neither," they say. "Ask Hallam. Hallam drives it."'
 
   - triggers:
       - type: response
