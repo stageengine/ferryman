@@ -19,7 +19,7 @@ actions:
           text: >-
             High on the back of the coat, between the shoulder blades, there is a hole about the
             width of a thumb, and the cloth round it has gone stiff and dark and stayed that
-            way. It is on the back. They were walking away from whoever did it.
+            way. It's on the back. They were walking away from whoever did it.
 
   - id: ask
     requires:
@@ -29,16 +29,16 @@ actions:
       - type: response
         data:
           text: >-
-            "Ask," they say, with the coin shut in their fist. "I have got nothing else to do
-            and I have got a very long time to do it in."
+            "Ask," they say, with the coin shut in their fist. "I've got nothing else to do
+            and I've got a very long time to do it in."
 
   - id: ask
     triggers:
       - type: response
         data:
           text: >-
-            "Ask, then," they say. "You are the first thing to come up this road in four months
-            that was not the cart."
+            "Ask, then," they say. "You're the first thing to come up this road in four months
+            that wasn't the cart."
 
   - id: ask
     preposition: for
@@ -46,7 +46,7 @@ actions:
       - type: response
         data:
           text: >-
-            "I have not got anything," they say, and turns their pockets out to show you, and
+            "I've got nothing," they say, and turns their pockets out to show you, and
             they are quite right.
 
   - id: give
@@ -58,7 +58,7 @@ actions:
       - type: response
         data:
           text: >-
-            "I have got one," they say, and opens their fist to show you, and shuts it again.
+            "I've got one," they say, and opens their fist to show you, and shuts it again.
             "One is all it wants. You keep the rest of yours."
 
   - id: give
@@ -75,9 +75,9 @@ actions:
       - type: response
         data:
           text: >-
-            "Four months I have been turning out these pockets," they say. "Four months. And it
-            was a coin. That is all it was." Their hand closes on it. "Thank you. I do not think
-            I have said that to anybody since the March."
+            "Four months I've been turning out these pockets," they say. "Four months. And it
+            was a coin. That is all it was." Their hand closes on it. "Thank you. I don't think
+            I've said that to anybody since the March."
       - type: adjust-measure
         data: { subject: coins, measure: quantity, by: -1 }
       - type: set-flag
@@ -90,14 +90,14 @@ actions:
         data:
           text: >-
             You get as far as holding it out. They look at it, and then at you, and put their hand
-            over yours and push it gently back. "No," they say. "Not your last one. I have stood
+            over yours and push it gently back. "No," they say. "Not your last one. I've stood
             here four months and I can stand here another day. Yours is spoken for."
 
   - id: give
     triggers:
       - type: response
         data:
-          text: '"That is good of you," they say, "and it is not the thing I am short of."'
+          text: '"That is good of you," they say, "and it's not the thing I am short of."'
 
 knows:
   - verb: tell
@@ -115,7 +115,7 @@ knows:
       - type: response
         data:
           text: >-
-            They listen to all of it without moving. "One coin," they say. "I have walked to
+            They listen to all of it without moving. "One coin," they say. "I've walked to
             within the sound of that water forty times and turned round because I did not know
             what I would be walking up to. That is all it was. Somebody to say it out loud."
       - type: response
@@ -123,7 +123,7 @@ knows:
           text: >-
             They step off the worn patch of grass, which takes an effort you can see, and stand
             on the road proper for the first time since March. "Fourth milestone," they say,
-            looking back at it. "I have been calling that home." Then they go up the road, not
+            looking back at it. "I've been calling that home." Then they go up the road, not
             fast, and the fog takes them, and the crows go up off the cutting after them.
       - type: set-flag
         data: { flag: soldier-sent }
@@ -156,7 +156,7 @@ knows:
         data:
           text: >-
             "One coin," they say. "That is it? That is the whole of it?" They look down at their
-            fist. "I have stood at this stone for four months because I did not know what was
+            fist. "I've stood at this stone for four months because I did not know what was
             being asked of me."
       - type: response
         data:
@@ -184,7 +184,7 @@ knows:
         data:
           text: >-
             They speak before you do, without turning round. "I know what I am," they say. "You do
-            not have to work up to it. I have known since March." A pause. "What I do not know is
+            not have to work up to it. I've known since March." A pause. "What I don't know is
             where I am supposed to go."
 
   - topic: dead
@@ -193,8 +193,8 @@ knows:
         data:
           text: >-
             "Yes," they say, simply. "In the March, on this road, and I did not see it coming
-            because it came from behind me." They say it the way you would give a date. "It is
-            knowing it that is easy. It is the after that nobody tells you a single thing about."
+            because it came from behind me." They say it the way you would give a date. "It's
+            knowing it that is easy. It's the after that nobody tells you a single thing about."
     knows:
       - topic: soldier
         open: true
@@ -207,9 +207,9 @@ knows:
           - type: response
             data:
               text: >-
-                "Nobody came. The cart goes past twice a day and does not stop. So I have stood
-                here, and I have got very good at standing here, and I would rather you did not
-                tell me that four months is not long, because I do not think it is going to stop
+                "Nobody came. The cart goes past twice a day and does not stop. So I've stood
+                here, and I've got very good at standing here, and I would rather you did not
+                tell me that four months is not long, because I don't think it's going to stop
                 at four months."
 
   - topic: ferry
@@ -220,7 +220,7 @@ knows:
       - type: response
         data:
           text: >-
-            "There is water up there," they say. "I have got as far as hearing it, forty times."
+            "There is water up there," they say. "I've got as far as hearing it, forty times."
             The fist with the coin in it comes up slightly. "Tell me what is at the end of this
             road and I will go. Tell me properly."
 
@@ -229,23 +229,23 @@ knows:
       - type: response
         data:
           text: >-
-            "There is water somewhere up there," they say. "I have walked towards it as far as the
-            sound of it and come back to this stone every single time, because I do not know what
-            is at the end of it and I have nothing to offer anybody who is."
+            "There is water somewhere up there," they say. "I've walked towards it as far as the
+            sound of it and come back to this stone every single time, because I don't know what
+            is at the end of it and I've nothing to offer anybody who is."
 
   - topic: ferryman
     triggers:
       - type: response
         data:
-          text: '"Is there somebody?" they say, and it is the first time they have sounded like a person. "Is there actually somebody there?"'
+          text: '"Is there somebody?" they say, and it's the first time they have sounded like a person. "Is there actually somebody there?"'
 
   - topic: river
     triggers:
       - type: response
         data:
           text: >-
-            "I can hear it from here on a quiet day, and every day is quiet," they say. "It is a big
-            river. It does not sound like a big river. That is the part I do not care for."
+            "I can hear it from here on a quiet day, and every day is quiet," they say. "It's a big
+            river. It does not sound like a big river. That is the part I don't care for."
 
   - topic: coins
     requires:
@@ -254,15 +254,15 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"I have got one," they say, and does not open the fist this time. "I am not putting it down."'
+          text: '"I've got one," they say, and does not open the fist this time. "I am not putting it down."'
 
   - topic: coins
     triggers:
       - type: response
         data:
           text: >-
-            "I have turned these pockets out every day since March," they say, and does it again
-            while you watch, and there is nothing in any of them. "Whatever it is that everybody
+            "I've turned these pockets out every day since March," they say, and does it again
+            while you watch, and there is nothing in any of them. "Whatever it's that everybody
             else finds, I did not come up this road with it."
 
   - topic: milestone
@@ -270,8 +270,8 @@ knows:
       - type: response
         data:
           text: >-
-            "The fourth," they say. "There is no place cut on it and no distance. I have had four
-            months to think about that and I have decided I am glad."
+            "The fourth," they say. "There is no place cut on it and no distance. I've had four
+            months to think about that and I've decided I am glad."
 
   - topic: soldier
     triggers:
@@ -279,7 +279,7 @@ knows:
         data:
           text: >-
             "Garrison," they say, and touches the coat without looking at it. "Four years of the
-            same weather with somebody who is still stood at that gate, and I have thought about
+            same weather with somebody who is still stood at that gate, and I've thought about
             walking back down to them, and I would not know how to start."
 
   - topic: guard
@@ -287,17 +287,17 @@ knows:
       - type: response
         data:
           text: >-
-            Something goes across their face. "They are still on the gate, then," they say. "Do not
-            tell them I am up here. No - tell them. I do not know. We came up together."
+            Something goes across their face. "They are still on the gate, then," they say. "Don't
+            tell them I am up here. No - tell them. I don't know. We came up together."
 
   - topic: carter
     triggers:
       - type: response
         data:
           text: >-
-            "Twice a day, loaded going up and empty coming back," they say. "I have put my hand up
-            once. Only once." They look at the ruts. "They did not stop, and I have understood since
-            why not, and I have not put it up again."
+            "Twice a day, loaded going up and empty coming back," they say. "I've put my hand up
+            once. Only once." They look at the ruts. "They did not stop, and I've understood since
+            why not, and I've not put it up again."
 
   - topic: cart
     triggers:
@@ -320,7 +320,7 @@ knows:
       - type: response
         data:
           text: >-
-            "It has been that colour every day I have stood here," they say. "It does not thin in the
+            "It has been that colour every day I've stood here," they say. "It does not thin in the
             morning, because there is no morning. I stopped waiting for one in about the June."
 
   - topic: crows
@@ -350,7 +350,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"I had one," they say. "It went up the road with the rest of me. It is not the paper that stops you."'
+          text: '"I had one," they say. "It went up the road with the rest of me. It's not the paper that stops you."'
 
   - triggers:
       - type: response
