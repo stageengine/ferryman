@@ -18,22 +18,22 @@ actions:
       - type: response
         data:
           text: >-
-            Their boots are towards the hearth and steaming, which is the only thing in this
+            Their muddy boots are towards the fireplace and steaming, which is the only thing in this
             room behaving as though the fire were lit.
       - type: response
         data:
           text: >-
-            The arm inside the torn sleeve is wrong. From the elbow to the wrist it is flat, and
-            dark, and it has the width of a cart rim in it, and they hold the flagon in both
-            hands regardless and the flat arm does its share of the holding.
+            One of his arms inside his tattered sleeves has wasted away. From the elbow to the wrist 
+            it's flat, white, and seemingly skeletal. They hold the flagon in both hands regardless 
+            and the withered arm does its share of the holding.
 
   - id: ask
     triggers:
       - type: response
         data:
           text: >-
-            "Ask away," they say. "I am not going anywhere while there is beer in this glass,
-            and there is not much."
+            "Ask away," they say. "I am not going anywhere while there's beer in this glass,
+            and there's not much."
 
   - id: ask
     preposition: for
@@ -53,8 +53,8 @@ actions:
       - type: response
         data:
           text: >-
-            "Not a chance. I need it to do my route," they say, and their eye goes down to the
-            empty glass, and stays there a moment longer than it needs to.
+            "Not a chance. I need it to do my route," they say, and their eyes go down to the
+            empty glass, and stay there a moment longer than they need to.
 
   - id: ask
     preposition: for
@@ -62,7 +62,7 @@ actions:
       - type: response
         data:
           text: >-
-            "You would want to ask me about a thing rather than for it," they say. "The pass,
+            "You want to ask me about a thing rather than for it," they say. "The pass,
             if it is the road north you are after."
 
   - id: give
@@ -82,9 +82,9 @@ actions:
       - type: response
         data:
           text: >-
-            "Right," they say. "The river will not mind. It has never once minded, and I have
+            "Right," they say. "The river will not mind. It's never once minded, and I have
             never once tried it." They pull a half-sheet out of the cloak, fold it once, and
-            push it across the boards. "Take it. I am not going up today. I will go up
+            push it across the table. "Take it. I am not going up today. I will go up
             tomorrow, and the depot will write me another if it comes to that."
       - type: add-to-inventory
         data: { object: pass }
@@ -97,7 +97,7 @@ actions:
       - type: response
         data:
           text: >-
-            "That is a fine offer," they say, and looks at your empty hands, and then at the taps.
+            "That's a fine offer," they say, and looks at your empty hands, and then at the taps.
             "You would have to be holding it."
 
   - id: give
@@ -106,14 +106,14 @@ actions:
       - type: response
         data:
           text: >-
-            "I have money," they say, without taking it. "What I have not got is a pint in
+            "I've money," they say, without taking it. "What I have not got is a pint in
             front of me. The keeper is the one you want, and the keeper does not do favours."
 
   - id: give
     triggers:
       - type: response
         data:
-          text: '"That is kind," they say, "and it is not a pint."'
+          text: '"That's kind," they say, "and it's not a pint."'
 
 knows:
   - verb: tell
@@ -126,7 +126,7 @@ knows:
         data:
           text: >-
             They stop with the glass halfway up. "Down to the boat," they say. "On their own
-            two feet." They put the glass down again. "That is not how it usually goes. That is
+            two feet." They put the glass down again. "That's not how it usually goes. That's
             not how it goes at all."
 
   - verb: tell
@@ -153,14 +153,14 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"You have it," they say. "Go north before you think about it too hard."'
+          text: '"You've got it," they say. "Go north before you think about it too hard."'
 
   - topic: pass
     triggers:
       - type: response
         data:
           text: >-
-            "I have one, and it is how I get a load up to the crossing," they say. "So it is not
+            "I have one, and it is how I get a load up to the crossing," they say. "So it's not
             a thing I hand about."
       - type: response
         data:
@@ -213,8 +213,7 @@ knows:
         data:
           text: >-
             "I get to the jetty and no further," they say. "I slide the load off the back and I
-            turn the cart round and I come home. I have never set a foot on those planks and I
-            am not going to."
+            turn the cart round and I come home. I've never set a foot on those planks and I'm not going to."
 
   - topic: ferryman
     triggers:
@@ -230,8 +229,8 @@ knows:
       - type: response
         data:
           text: >-
-            "Wide, grey, quiet as a church," they say. "You would think a river that size would
-            make a noise. Stand on that jetty and you will hear yourself swallow."
+            "Wide, grey, quiet as a church," they say. "You'd think a river that size would
+            make a noise. Stand on that jetty and you'll hear yourself swallow."
 
   - topic: guard
     triggers:
@@ -239,45 +238,45 @@ knows:
         data:
           text: >-
             "Lifts the chain, drops the chain," they say. "Reads the sheet every single day like
-            it might have changed. I have started to find that restful."
+            it might have changed. I have started to find that comforting."
 
   - topic: barkeep
     triggers:
       - type: response
         data:
-          text: '"Nine years behind that counter," they say. "Never once poured one on trust, and I have never once asked twice."'
+          text: '"Nine years behind that counter," they say. "Never once poured one on trust, and I've never once asked twice."'
 
   - topic: beer
     triggers:
       - type: response
         data:
           text: >-
-            "They keep it well here," they say. "It is the one thing in this village that is kept
-            at all." A pause. "I could not tell you what it tastes of. I have decided that is the
+            "They keep it well here," they say. "It's the one thing in this village that is kept
+            at all." A pause. "I couldn't tell you what it tastes of. I have decided that is the
             beer's business."
 
   - topic: bar
     triggers:
       - type: response
         data:
-          text: '"One coin a pint and not a farthing of argument in them," they say. "It is a good house."'
+          text: '"One coin a pint and not a farthing of argument in them," they say. "It's a good house."'
 
   - topic: fire
     triggers:
       - type: response
         data:
           text: >-
-            "It was lit when I got here," they say, "and I have sat as close to it as the seat
+            "It was lit when I got here," they say, "and I've sat as close to it as the seat
             allows ever since." They look at their steaming boots. "It does something for the
-            boots. It has never done a thing for me."
+            boots. It's never done a thing for me."
 
   - topic: village
     triggers:
       - type: response
         data:
           text: >-
-            "It is on my route and it is where I stop," they say. "I could not tell you the name
-            of it. There is no board on the road either end, and I have been coming here for
+            "It is on my route and it's where I stop," they say. "I could not tell you the name
+            of it. There's no board on the road either end, and I have been coming here for
             years."
 
   - topic: coins
@@ -285,8 +284,8 @@ knows:
       - type: response
         data:
           text: >-
-            "Everybody who comes through here has one," they say, "or finds one. I have stopped
-            thinking that is a coincidence and I have not started thinking anything else."
+            "Everybody who comes through here has one," they say, "or finds one. I've stopped
+            thinking that is a coincidence and I've not started thinking anything else."
 
   - topic: name
     triggers:
@@ -294,7 +293,7 @@ knows:
         data:
           text: >-
             "Hallam," they say, and put a hand out, and take it back before you have got yours
-            up. "There. That is the first time I have said it out loud in a while."
+            up. "There. That's the first time I have said it out loud in a while."
 
   - topic: captain
     triggers:
@@ -308,8 +307,8 @@ knows:
         data:
           text: >-
             They take a long time over the empty glass. "I carry what I am given and I go where the
-            sheet says," they say. "You are asking me what the load is. I have had years to ask
-            myself that and I have got very good at not."
+            sheet says." they say. "You are asking me what the load is. I have had years to ask
+            myself that and I've got very good at not."
 
   - topic: price
     triggers:
@@ -322,7 +321,7 @@ knows:
       - type: response
         data:
           text: >-
-            "Ruts to the axle and one set of them, mine, up and back," they say. "It is the only
+            "Ruts to the axle and one set of them, mine, up and back," they say. "It's the only
             road I have ever driven that does not go anywhere except its own end."
 
   - triggers:
