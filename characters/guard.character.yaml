@@ -11,14 +11,14 @@ actions:
           text: >-
             A long black cloak, worn through at the cuffs, with plate armour underneath it
             that has been kept up better than the cloak has. A long blade is sheathed at
-            their side and the whole length of it is rusted into the scabbard, and neither of
+            their side and the whole length of it's rusted into the scabbard, and neither of
             you mentions this.
       - type: response
         data:
           text: >-
             They have stood at this gate long enough to have taken its shape. While you are
-            looking at them they do not blink, and it takes you a moment to work out which of
-            the things you have just seen was the odd one.
+            looking at them they don't blink, and it takes you a moment to work out which of
+            the things you've just seen was the odd one.
       - type: response
         data:
           text: >-
@@ -32,7 +32,7 @@ actions:
       - type: response
         data:
           text: >-
-            "Ask, then," they say, still facing the road. "About the pass, if it is north you
+            "Ask, then," they say, still facing the road. "About the pass, if it's north you
             have got in mind."
 
   - id: ask
@@ -42,7 +42,7 @@ actions:
       - type: response
         data:
           text: >-
-            "I read them. I do not write them," they say. "And I have never once been told
+            "I read them. I don't write them," they say. "And I've never once been told
             where they come from. Somebody in the tavern came down that road with one."
 
   - id: ask
@@ -51,7 +51,7 @@ actions:
       - type: response
         data:
           text: >-
-            "You would want to ask me about a thing rather than for it," they say. "I have
+            "You would want to ask me about a thing rather than for it," they say. "I've
             nothing of my own here."
 
   - id: give
@@ -61,14 +61,14 @@ actions:
         data:
           text: >-
             They look at the coin in your hand for slightly too long, and then away, back to
-            the road. "No," they say. "That one is not mine and it is not for me. Keep hold of
+            the road. "No," they say. "That one is not mine and it's not for me. Keep hold of
             it."
 
   - id: give
     triggers:
       - type: response
         data:
-          text: '"I am on the gate," they say, which is a no.'
+          text: '"I'd on the gate," they say, which is a no.'
 
 knows:
   - verb: tell
@@ -92,7 +92,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"You would have to know something I do not," they say, "and nobody does."'
+          text: '"You would have to know something I don't," they say, "and nobody does."'
 
   - requires:
       - type: performed
@@ -102,9 +102,9 @@ knows:
       - type: response
         data:
           text: >-
-            "You will not be going north," they say, without taking their eyes off the road.
+            "You'll not be going north," they say, without taking their eyes off the road.
             "Nobody goes up that road but the cart. A pass gets you through and nothing else
-            does, and I would not bother trying the woods."
+            does, and I'd not bother trying the woods."
 
   - topic: pass
     requires:
@@ -120,12 +120,12 @@ knows:
       - type: response
         data:
           text: >-
-            "Two stamps and a name and a figure in the last column," they say. "That is all I
-            am asked to see, and I see it maybe once a day."
+            "Two stamps and a name and a figure in the last column," they say. "That is all I'm 
+            asked to see, and I see it maybe once a day."
       - type: response
         data:
           text: >-
-            "The carter has one. It is in the tavern with the carter, and the carter is in the
+            "The carter has one. it's in the tavern with the carter, and the carter is in the
             tavern with a glass they have not got the price of."
     knows:
       - topic: captain
@@ -133,9 +133,9 @@ knows:
           - type: response
             data:
               text: >-
-                "Captain's orders, the road being shut," they say. "It is the phrase I was
+                "Captain's orders, the road being shut," they say. "it's the phrase I was
                 given." A pause, and their hand goes flat over the coals. "I could not tell you
-                the name. I have said the word ten thousand times and there is nothing behind
+                the name. I've said the word ten thousand times and there is nothing behind
                 it."
         knows:
           - topic: soldier
@@ -145,22 +145,22 @@ knows:
                 data:
                   text: >-
                     "One of ours went up that road and never came down," they say. "March, it
-                    was. They are still up there - fourth milestone, standing at it. I can see
+                    was. They're still up there - fourth milestone, standing at it. I can see
                     them from this gate on a thinner day than this."
               - type: response
                 data:
                   text: >-
-                    "I am not to leave the gate," they say, before you have asked. "And they
-                    are not to come back down it. That is the whole of the arrangement and
-                    neither of us made it."
+                    "I'd not to leave the gate," they say, before you've asked. "And they're not 
+                    to come back down it. That is the whole of the arrangement and neither of us 
+                    made it."
 
   - topic: soldier
     triggers:
       - type: response
         data:
           text: >-
-            "There is one up the road, if that is who you mean," they say. "Standing at the
-            fourth milestone since March. Ask me about the pass and I will tell you how you
+            "There's one up the road, if that's who you mean," they say. "Standing at the
+            fourth milestone since March. Ask me about the pass and I'll tell you how you
             get to them."
 
   - topic: coins
@@ -168,17 +168,17 @@ knows:
       - type: response
         data:
           text: >-
-            "There is money in that wall," they say, nodding west without looking. "There has
+            "There's money in that wall," they say, nodding west without looking. "There has
             always been money in that wall. It turns up under the stones for whoever is here
-            and needs it, and I have stopped asking myself how."
+            and needs it, and I've stopped asking myself how."
 
   - topic: ferry
     triggers:
       - type: response
         data:
           text: >-
-            "There is a boat at the end of that road," they say. "It goes over and it comes
-            back empty. I have never seen it and I know it does."
+            "There's a boat at the end of that road," they say. "It goes over and it comes
+            back empty. I've never seen it and I know it does."
 
   - topic: ferryman
     triggers:
@@ -201,29 +201,29 @@ knows:
         data:
           text: >-
             "Comes down empty every day and goes up loaded," they say. "Or the other way about.
-            I have watched that cart a thousand times and I could not tell you which."
+            I've watched that cart a thousand times and I could not tell you which."
 
   - topic: cart
     triggers:
       - type: response
         data:
           text: >-
-            "It is lashed down under a cloth going up and it is not lashed down coming back,"
-            they say. "I lift the chain. I do not look in the cart."
+            "It's lashed down under a cloth going up and it's not lashed down coming back,"
+            they say. "I lift the chain. I don't look in the cart."
 
   - topic: barkeep
     triggers:
       - type: response
         data:
-          text: '"Behind that counter as long as I have been at this gate," they say. "Longer, to hear them."'
+          text: '"Behind that counter as long as I've been at this gate," they say. "Longer, to hear them."'
 
   - topic: village
     triggers:
       - type: response
         data:
           text: >-
-            "It is quiet and it keeps," they say. "Nobody is born here and nobody buries
-            anybody, and if you had asked me that yesterday I would have said the same thing
+            "It's quiet and it keeps," they say. "Nobody is born here and nobody buries
+            anybody, and if you had asked me that yesterday I'd have said the same thing
             and thought nothing of it."
 
   - topic: name
@@ -232,7 +232,7 @@ knows:
         data:
           text: >-
             "Mine?" They think about it, which takes a while. "Nobody has wanted it in a long
-            time." They go back to the road. "I have not asked you yours either. It is not a
+            time." They go back to the road. "I've not asked you yours either. it's not a
             thing that comes up."
 
   - topic: dead
@@ -240,7 +240,7 @@ knows:
       - type: response
         data:
           text: >-
-            "That is a garrison matter," they say, in a voice that has closed, and it is the
+            "That's a garrison matter," they say, in a voice that has closed, and it's the
             fastest they have said anything.
 
   - topic: price
@@ -260,9 +260,9 @@ knows:
       - type: response
         data:
           text: >-
-            They look up at it, briefly, the way you look at a ceiling. "It has been like that
-            since I came up," they say. "I could not tell you what it was like before, and I
-            have only just noticed that."
+            They look up at it, briefly, the way you look at a ceiling. "It's been like that
+            since I came up," they say. "I couldn't tell you what it was like before, and I've 
+            only just noticed that."
 
   - topic: brazier
     triggers:
@@ -274,7 +274,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"It is a chain at axle height," they say. "Standing at it is the job. The chain is not the job."'
+          text: '"It's a chain at axle height," they say. "Standing at it's the job. The chain is not the job."'
 
   - topic: stones
     triggers:
@@ -288,7 +288,7 @@ knows:
     triggers:
       - type: response
         data:
-          text: '"I am on duty," they say, in the voice of somebody who has been asked that before.'
+          text: '"I'd on duty," they say, in the voice of somebody who has been asked that before.'
 
   - triggers:
       - type: response
