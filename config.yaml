@@ -2,7 +2,7 @@ id: ferryman
 start: village-road
 metadata:
   title: Ferryman
-  version: 0.7.0
+  version: 0.1.0
   rating: PEGI 16
   genres:
     - Horror
