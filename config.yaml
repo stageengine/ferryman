@@ -1,8 +1,23 @@
-game:
-  id: ferryman
+id: ferryman
+start: village-road
+metadata:
   title: Ferryman
   version: 0.7.0
-  icon: assets/icon.png
-  cover: assets/cover.png
-
-start: village-road
+  rating: PEGI 16
+  genres:
+    - Horror
+    - Fantasy
+  release:
+    date: "2026-01-01"
+  developer:
+    name: Sgail Games
+    website: https://sgail.com
+  publisher:
+    name: Sgail Games
+    website: https://sgail.com
+  website: https://engine.sgail.com
+  description: >-
+    Ferryman, a game about a lost soul's journey.
+  assets:
+    icon: assets/icon.png
+    cover: assets/cover.png
