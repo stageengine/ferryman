@@ -3,9 +3,8 @@ id: river-crossing
 meta:
   title: The River Crossing
 
-actions:
-  - id: look
-    requires:
+presence:
+  - requires:
       - type: flag
         data: { flag: soldier-sent }
     triggers:
@@ -30,8 +29,7 @@ actions:
             comes out of the cloak and turns over, palm up, and stays there. "Are you not
             coming as well?"
 
-  - id: look
-    requires:
+  - requires:
       - type: visited
         data: { times: 2 }
     triggers:
@@ -42,8 +40,7 @@ actions:
             still against the piles, and the ferryman still on the post with one hand out, palm
             up, and no sign of getting tired of holding it there.
 
-  - id: look
-    triggers:
+  - triggers:
       - type: response
         data:
           text: >-

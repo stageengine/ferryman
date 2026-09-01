@@ -3,9 +3,8 @@ id: road-north
 meta:
   title: The Road North
 
-actions:
-  - id: look
-    requires:
+presence:
+  - requires:
       - type: character-here
         negate: true
         data: { character: soldier }
@@ -24,8 +23,7 @@ actions:
             the grass in front of it's worn down to the dirt in a patch about the size of a
             person standing.
 
-  - id: look
-    requires:
+  - requires:
       - type: visited
         data: { times: 2 }
     triggers:
@@ -35,8 +33,7 @@ actions:
             The road goes on climbing, and the water is still ahead, and the soldier is
             still at the fourth milestone exactly as you left them.
 
-  - id: look
-    triggers:
+  - triggers:
       - type: response
         data:
           text: >-

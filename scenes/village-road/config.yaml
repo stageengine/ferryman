@@ -3,9 +3,8 @@ id: village-road
 meta:
   title: The Village Road
 
-actions:
-  - id: look
-    requires:
+presence:
+  - requires:
       - type: visited
         data: { times: 2 }
     triggers:
@@ -15,8 +14,7 @@ actions:
             Back on the road south of the village. The stump is where you left it, and the
             sky has not moved at all.
 
-  - id: look
-    triggers:
+  - triggers:
       - type: response
         data:
           text: >-

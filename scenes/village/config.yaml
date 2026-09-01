@@ -3,9 +3,8 @@ id: village
 meta:
   title: The Village
 
-actions:
-  - id: look
-    requires:
+presence:
+  - requires:
       - type: visited
         data: { times: 2 }
     triggers:
@@ -16,8 +15,7 @@ actions:
             gate with the guard beside it, and there's still light in the tavern window.
             Nothing here has got on with anything while you were away.
 
-  - id: look
-    triggers:
+  - triggers:
       - type: response
         data:
           text: >-

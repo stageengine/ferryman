@@ -3,9 +3,8 @@ id: tavern
 meta:
   title: The Tavern
 
-actions:
-  - id: look
-    requires:
+presence:
+  - requires:
       - type: flag
         data: { flag: pass-given }
     triggers:
@@ -17,8 +16,7 @@ actions:
             towards the hearth, and the look of somebody whose day has come good and who is
             not going anywhere before tomorrow.
 
-  - id: look
-    triggers:
+  - triggers:
       - type: response
         data:
           text: >-
