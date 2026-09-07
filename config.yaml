@@ -2,7 +2,7 @@ id: ferryman
 start: village-road
 metadata:
   title: Ferryman
-  version: 0.1.1
+  version: 0.1.2
   rating: PEGI 16
   genres:
     - Horror
@@ -16,8 +16,24 @@ metadata:
     name: Sgail Games
     website: https://sgail.com
   website: https://engine.sgail.com
-  description: >-
+  description: |-
     Ferryman, a game about a lost soul's journey.
+
+    *© 2026 Sgail Ltd, released under the MIT licence for the purposes of providing a demo of the Stage engine.*
   assets:
     icon: assets/icon.png
     cover: assets/cover.png
+
+achievements:
+  - id: lit-the-lantern
+    title: First Light
+    description: Light the lantern.
+    icon: assets/icon.png
+  - id: into-the-fog
+    title: Into the Fog
+    description: Look at the fog on the road out of the village.
+  - id: nine-rings
+    title: Nine Rings
+    description: Count the stump's rings all the way round.
+    icon: assets/icon.png
+    secret: true

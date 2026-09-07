@@ -97,6 +97,8 @@ objects:
                 steadily on nothing at all.
           - type: set-flag
             data: { flag: lantern-lit, value: true }
+          - type: achievement
+            data: { id: lit-the-lantern }
 
   - id: stump
     synonyms: [tree stump, tree]
@@ -118,6 +120,8 @@ objects:
                 Cut flat a long time ago and going soft at the edges. The rings are there
                 to be counted, and you get to nine and lose your place, and start again,
                 and get to nine.
+          - type: achievement
+            data: { id: nine-rings }
 
   - id: path
     synonyms: [track, road, way, ruts]
@@ -165,6 +169,8 @@ objects:
                 fields the way a lid sits on a pot, and the longer you look up into it the
                 more certain you are that there is nothing behind it - not the sun, not
                 weather, nothing at all.
+          - type: achievement
+            data: { id: into-the-fog }
 
   - id: distant-village
     name: roofs
