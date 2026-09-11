@@ -1,7 +1,6 @@
 id: river-crossing
 
-meta:
-  title: The River Crossing
+name: The River Crossing
 
 presence:
   - requires:

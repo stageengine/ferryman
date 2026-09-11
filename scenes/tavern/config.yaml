@@ -1,7 +1,6 @@
 id: tavern
 
-meta:
-  title: The Tavern
+name: The Tavern
 
 presence:
   - requires:

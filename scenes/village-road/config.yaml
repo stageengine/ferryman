@@ -1,7 +1,6 @@
 id: village-road
 
-meta:
-  title: The Village Road
+name: The Village Road
 
 presence:
   - requires:

@@ -1,7 +1,6 @@
 id: village
 
-meta:
-  title: The Village
+name: The Village
 
 presence:
   - requires:

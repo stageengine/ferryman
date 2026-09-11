@@ -1,7 +1,6 @@
 id: road-north
 
-meta:
-  title: The Road North
+name: The Road North
 
 presence:
   - requires:
