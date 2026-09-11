@@ -1,4 +1,3 @@
-navigational: [walk, board, leave]
 conversational: [ask, talk, tell]
 
 recipient-first: [give, get]
@@ -6,12 +5,15 @@ recipient-first: [give, get]
 verbs:
   - id: walk
     synonyms: [go, head, enter, visit, approach, travel, return, come, run, wander]
+    navigational: true
 
   - id: board
     synonyms: [cross, embark, sail, ride]
+    navigational: true
 
   - id: leave
     synonyms: [exit, depart]
+    navigational: true
 
   - id: look
     synonyms: [examine, read, search, check, inspect, study, view, watch, observe, see, glance, survey, x, l]
