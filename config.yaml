@@ -18,8 +18,9 @@ metadata:
   website: https://engine.sgail.com
   description: |-
     Ferryman, a game about a lost soul's journey.
-
-    *© 2026 Sgail Ltd, released under the MIT licence for the purposes of providing a demo of the Stage engine.*
+  copyright: |-
+    Ferryman: Journey of a Lost Soul
+    Copyright (c) 2026 Sgail Ltd, released under the MIT licence for the purposes of providing a demo of the Stage engine.
   assets:
     icon: assets/icon.png
     cover: assets/cover.png
