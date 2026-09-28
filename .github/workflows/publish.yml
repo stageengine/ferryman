@@ -15,6 +15,12 @@ name: Publish
 # and only a Mac can be asked, so the engine leaves that one out rather than writing a
 # program nobody should be handed. Apple Silicon signs in pure Rust and needs no help.
 #
+# **The store's rows are not written here**, and were once. A release page is public and
+# is for players; the statements that put a build in the shop are the app's own table
+# names and listing ids, which is nothing secret and nothing a player should be reading.
+# They are generated from this release instead, by `deno task rows` in the app, which
+# reads the assets and hashes what it actually downloads.
+#
 # **`STAGE` has to be a release that can actually export this game.** A template and the
 # Stage doing the exporting must be the same version - the engine refuses a mismatch
 # rather than writing a game into a Stage that might read it differently - so this is the
@@ -140,7 +146,6 @@ jobs:
       #
       # Everything else is already one file and is left alone.
       - name: Name every program for the release
-        id: assets
         env:
           ID: ${{ steps.built.outputs.id }}
           VERSION: ${{ steps.built.outputs.version }}
@@ -173,64 +178,6 @@ jobs:
 
           ls -la
 
-      # What the store needs, worked out here rather than by hand afterwards. Each row is
-      # one platform's address, size and hash; the hash is what the app checks a download
-      # against before it will run it, so a row written by eye is a row that can be wrong
-      # in a way nobody notices until somebody cannot play the game.
-      - name: Write the store's rows
-        id: rows
-        env:
-          ID: ${{ steps.built.outputs.id }}
-          VERSION: ${{ steps.built.outputs.version }}
-          TAG: ${{ inputs.tag || github.ref_name }}
-        run: |
-          set -euo pipefail
-
-          python3 - <<'PY' >> "$GITHUB_OUTPUT"
-
-          import hashlib, os, pathlib
-
-          game = os.environ['ID']
-          version = os.environ['VERSION']
-          tag = os.environ['TAG']
-          repository = os.environ['GITHUB_REPOSITORY']
-
-          rows = []
-
-          for at in sorted(pathlib.Path('release').iterdir()):
-              if at.name == 'checksums.txt':
-                  continue
-
-              # `<id>-<version>-<platform>` with whatever suffix the platform wanted.
-              platform = at.name[len(f'{game}-{version}-'):]
-              platform = platform.removesuffix('.zip').removesuffix('.exe')
-
-              raw = at.read_bytes()
-              url = f'https://github.com/{repository}/releases/download/{tag}/{at.name}'
-
-              rows.append(
-                  f"  ('{game}', '{platform}', '{url}', {len(raw)}, "
-                  f"'{hashlib.sha256(raw).hexdigest()}')"
-              )
-
-          # The listing's own version moves with the builds. It is the last of the five
-          # fields a release used to set here: `hash`, `bytes`, `url` and `engine` were
-          # facts about one file and are rows in `builds` now, and `engine` is not a fact
-          # about anything since a game carries the engine that built it.
-          sql = (
-              'insert into public.builds (listing, platform, url, bytes, hash) values\n'
-              + ',\n'.join(rows)
-              + '\non conflict (listing, platform) do update set\n'
-              + '  url = excluded.url, bytes = excluded.bytes, hash = excluded.hash,\n'
-              + '  added_at = now();\n\n'
-              + f"update public.listings set version = '{version}' where id = '{game}';"
-          )
-
-          print('sql<<SQL')
-          print(sql)
-          print('SQL')
-          PY
-
       - name: Release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -238,7 +185,6 @@ jobs:
           TITLE: ${{ steps.built.outputs.title }}
           VERSION: ${{ steps.built.outputs.version }}
           ENGINE: ${{ steps.built.outputs.engine }}
-          SQL: ${{ steps.rows.outputs.sql }}
         run: |
           set -euo pipefail
 
@@ -250,15 +196,6 @@ jobs:
             echo
             echo 'The macOS downloads are zipped because an application is a folder. Everything'
             echo 'else is the program itself.'
-            echo
-            echo '## Putting it in the store'
-            echo
-            echo 'Run this against the project. It replaces a row for a platform that already'
-            echo 'has one, so re-publishing a version is safe.'
-            echo
-            echo '```sql'
-            echo "$SQL"
-            echo '```'
           } > notes.md
 
           gh release create "$TAG" \
