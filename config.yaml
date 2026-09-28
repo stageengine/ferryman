@@ -2,7 +2,14 @@ id: ferryman
 start: village-road
 metadata:
   title: Ferryman
-  version: 0.1.6
+  version: 0.1.7
+  copyright: |-
+    Ferryman: Journey of a Lost Soul
+    Copyright (c) 2026 Sgail Ltd, released under the MIT licence for the purposes of providing a demo of the Stage engine.
+
+# What a shop shows about the game, as against what the game is. `tile` is the square
+# that stands for it in a grid and `banner` is the wide one across the top of its page.
+store:
   rating: PEGI 16
   genres:
     - Horror
@@ -18,12 +25,23 @@ metadata:
   website: https://engine.sgail.com
   description: |-
     Ferryman, a game about a lost soul's journey.
-  copyright: |-
-    Ferryman: Journey of a Lost Soul
-    Copyright (c) 2026 Sgail Ltd, released under the MIT licence for the purposes of providing a demo of the Stage engine.
   assets:
-    icon: assets/icon.png
-    cover: assets/cover.png
+    tile: assets/icon.png
+    banner: assets/cover.png
+
+# One program per platform, each carrying the engine that built it. The two macOS
+# entries are separate architectures rather than one fat binary, which is what the
+# engine publishes itself and so what it can write a game into.
+export:
+  bundle-id: com.sgail.ferryman
+  platforms:
+    macos: [arm64, x86_64]
+    linux: [x86_64, arm64]
+    windows: [x86_64]
+  icons:
+    macos: assets/icon.icns
+    windows: assets/icon.ico
+    linux: assets/icon.png
 
 achievements:
   - id: lit-the-lantern

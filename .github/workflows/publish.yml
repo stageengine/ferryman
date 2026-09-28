@@ -1,5 +1,25 @@
 name: Publish
 
+# One program per platform, each with the engine inside it.
+#
+# This used to build a single `.stg` and publish that: ninety kilobytes of game that any
+# machine with a Stage on it could play. A game carries its own engine now, so what is
+# published is five programs, and a player needs no Stage at all.
+#
+# **One runner makes all five**, which is worth saying because it looks as though it
+# should not. `stage export` writes the game into a copy of Stage rather than compiling
+# anything, so the only thing it needs for a platform is that platform's published Stage,
+# handed over with `--templates`. No cross-compiler is involved.
+#
+# **It has to be a Mac**, though. An Intel Mac program is signed by asking the platform,
+# and only a Mac can be asked, so the engine leaves that one out rather than writing a
+# program nobody should be handed. Apple Silicon signs in pure Rust and needs no help.
+#
+# **`STAGE` has to be a release that can actually export this game.** A template and the
+# Stage doing the exporting must be the same version - the engine refuses a mismatch
+# rather than writing a game into a Stage that might read it differently - so this is the
+# one value to bump when the engine releases.
+
 on:
   push:
     tags: ['v*']
@@ -17,25 +37,48 @@ permissions:
   contents: write
 
 env:
-  STAGE: ${{ inputs.engine || '0.13.0' }}
+  STAGE: ${{ inputs.engine || '0.15.0' }}
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    # Not `ubuntu-latest`, and the reason is above: an Intel Mac build can only be signed
+    # on a Mac, and a runner that could make four of the five would publish a game that is
+    # missing one platform without saying so.
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.tag || github.ref }}
 
-      - name: Fetch Stage
+      # Every published Stage, and the list of sums published beside them. `export` reads
+      # both: the sums are what tell it a download arrived whole and came from the release
+      # it claims to, which matters more than usual here because a game is about to be
+      # written into each one and handed to somebody.
+      - name: Fetch the Stages to write into
         run: |
           set -euo pipefail
 
-          curl -fsSL -o stage \
-            "https://github.com/stageengine/releases/releases/download/v${STAGE}/stage-linux-x86_64"
+          mkdir -p templates
 
-          chmod +x stage
+          for asset in \
+            checksums.txt \
+            stage-macos-arm64 \
+            stage-macos-x86_64 \
+            stage-linux-arm64 \
+            stage-linux-x86_64 \
+            stage-windows-x86_64.exe
+          do
+            curl -fsSL -o "templates/$asset" \
+              "https://engine.sgail.com/download/engine@${STAGE}/$asset"
+          done
+
+          chmod +x templates/stage-macos-arm64
+
+          # The one this runner can actually execute, which is also the one that does the
+          # exporting. Its own version has to match the templates', which is the whole
+          # reason there is a single `STAGE` above rather than one per asset.
+          cp templates/stage-macos-arm64 stage
 
           ./stage --version
 
@@ -43,7 +86,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          ./stage build . --output game.stg --strict
+          ./stage compile . --output game.stg --strict
 
       - name: Read what was built
         id: built
@@ -52,7 +95,7 @@ jobs:
 
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
 
-          import gzip, hashlib, json, os
+          import gzip, json
 
           raw = open('game.stg', 'rb').read()
 
@@ -67,8 +110,6 @@ jobs:
               ('title', about.get('title', '')),
               ('version', about.get('version', '')),
               ('engine', built.get('engine', '')),
-              ('bytes', len(raw)),
-              ('hash', hashlib.sha256(raw).hexdigest()),
           ):
               print(f'{name}={value}')
           PY
@@ -86,74 +127,141 @@ jobs:
             exit 1
           fi
 
-      - name: Name it for the release
+      - name: Export a program for every platform
+        run: |
+          set -euo pipefail
+
+          ./stage export game.stg --output exports --templates templates
+
+      # A macOS game is a bundle, which is a directory, and an address serves one file.
+      # Zipped with `ditto` rather than `zip`, because a bundle carries resource forks and
+      # an extended attribute saying it is signed, and `zip` drops both - what comes out
+      # the other end would be a bundle macOS refuses to open.
+      #
+      # Everything else is already one file and is left alone.
+      - name: Name every program for the release
+        id: assets
         env:
           ID: ${{ steps.built.outputs.id }}
           VERSION: ${{ steps.built.outputs.version }}
         run: |
           set -euo pipefail
 
-          mv game.stg "${ID}-${VERSION}.stg"
+          mkdir -p release
 
-          sha256sum "${ID}-${VERSION}.stg" > checksums.txt
+          for platform in exports/*/; do
+            name="$(basename "$platform")"
+
+            app="$(find "$platform" -maxdepth 1 -name '*.app' -print -quit)"
+
+            if [ -n "$app" ]; then
+              ditto -c -k --sequesterRsrc --keepParent "$app" "release/${ID}-${VERSION}-${name}.zip"
+              continue
+            fi
+
+            program="$(find "$platform" -maxdepth 1 -type f -print -quit)"
+            suffix=''
+
+            case "$name" in
+              windows-*) suffix='.exe' ;;
+            esac
+
+            cp "$program" "release/${ID}-${VERSION}-${name}${suffix}"
+          done
+
+          cd release && shasum -a 256 * > checksums.txt
+
+          ls -la
+
+      # What the store needs, worked out here rather than by hand afterwards. Each row is
+      # one platform's address, size and hash; the hash is what the app checks a download
+      # against before it will run it, so a row written by eye is a row that can be wrong
+      # in a way nobody notices until somebody cannot play the game.
+      - name: Write the store's rows
+        id: rows
+        env:
+          ID: ${{ steps.built.outputs.id }}
+          VERSION: ${{ steps.built.outputs.version }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+
+          import hashlib, os, pathlib
+
+          game = os.environ['ID']
+          version = os.environ['VERSION']
+          tag = os.environ['TAG']
+          repository = os.environ['GITHUB_REPOSITORY']
+
+          rows = []
+
+          for at in sorted(pathlib.Path('release').iterdir()):
+              if at.name == 'checksums.txt':
+                  continue
+
+              # `<id>-<version>-<platform>` with whatever suffix the platform wanted.
+              platform = at.name[len(f'{game}-{version}-'):]
+              platform = platform.removesuffix('.zip').removesuffix('.exe')
+
+              raw = at.read_bytes()
+              url = f'https://github.com/{repository}/releases/download/{tag}/{at.name}'
+
+              rows.append(
+                  f"  ('{game}', '{platform}', '{url}', {len(raw)}, "
+                  f"'{hashlib.sha256(raw).hexdigest()}')"
+              )
+
+          # The listing's own version moves with the builds. It is the last of the five
+          # fields a release used to set here: `hash`, `bytes`, `url` and `engine` were
+          # facts about one file and are rows in `builds` now, and `engine` is not a fact
+          # about anything since a game carries the engine that built it.
+          sql = (
+              'insert into public.builds (listing, platform, url, bytes, hash) values\n'
+              + ',\n'.join(rows)
+              + '\non conflict (listing, platform) do update set\n'
+              + '  url = excluded.url, bytes = excluded.bytes, hash = excluded.hash,\n'
+              + '  added_at = now();\n\n'
+              + f"update public.listings set version = '{version}' where id = '{game}';"
+          )
+
+          print('sql<<SQL')
+          print(sql)
+          print('SQL')
+          PY
 
       - name: Release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ inputs.tag || github.ref_name }}
-          ID: ${{ steps.built.outputs.id }}
           TITLE: ${{ steps.built.outputs.title }}
           VERSION: ${{ steps.built.outputs.version }}
           ENGINE: ${{ steps.built.outputs.engine }}
-          BYTES: ${{ steps.built.outputs.bytes }}
-          HASH: ${{ steps.built.outputs.hash }}
+          SQL: ${{ steps.rows.outputs.sql }}
         run: |
           set -euo pipefail
 
-          file="${ID}-${VERSION}.stg"
-
           {
-            echo "\`$TITLE\` $VERSION, built by Stage $ENGINE."
+            echo "\`$TITLE\` $VERSION, carrying Stage $ENGINE."
             echo
-            echo '| | |'
-            echo '| --- | --- |'
-            echo "| game | \`$ID\` |"
-            echo "| version | \`$VERSION\` |"
-            echo "| engine | \`$ENGINE\` |"
-            echo "| bytes | \`$BYTES\` |"
-            echo "| sha256 | \`$HASH\` |"
+            echo 'One program per platform, each with the engine inside it. Nothing to install:'
+            echo 'download the one for your machine and open it.'
             echo
-            echo "Download: \`https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${file}\`"
+            echo 'The macOS downloads are zipped because an application is a folder. Everything'
+            echo 'else is the program itself.'
             echo
-            echo 'The versioned address above is the one to point anything at. A build is'
-            echo 'reproducible for a given engine, so that file and that hash go together'
-            echo 'for good; the `latest` address does not.'
+            echo '## Putting it in the store'
+            echo
+            echo 'Run this against the project. It replaces a row for a platform that already'
+            echo 'has one, so re-publishing a version is safe.'
+            echo
+            echo '```sql'
+            echo "$SQL"
+            echo '```'
           } > notes.md
 
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" "$file" checksums.txt --clobber
-            gh release edit "$TAG" --notes-file notes.md
-          else
-            gh release create "$TAG" "$file" checksums.txt \
-              --title "$TITLE $VERSION" \
-              --notes-file notes.md \
-              --verify-tag
-          fi
-
-      - name: Summary
-        env:
-          HASH: ${{ steps.built.outputs.hash }}
-          BYTES: ${{ steps.built.outputs.bytes }}
-          TAG: ${{ inputs.tag || github.ref_name }}
-          ID: ${{ steps.built.outputs.id }}
-          VERSION: ${{ steps.built.outputs.version }}
-        run: |
-          {
-            echo "### Published"
-            echo
-            echo "| | |"
-            echo "| --- | --- |"
-            echo "| url | \`https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${ID}-${VERSION}.stg\` |"
-            echo "| hash | \`${HASH}\` |"
-            echo "| bytes | \`${BYTES}\` |"
-          } >> "$GITHUB_STEP_SUMMARY"
+          gh release create "$TAG" \
+            --title "$TITLE $VERSION" \
+            --notes-file notes.md \
+            release/*
