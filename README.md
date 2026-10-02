@@ -4,7 +4,7 @@ For the purposes of showing off the mechanics of the Stage engine (https://engin
 
 ## Getting started
 
-Firstly, make sure you have the Stage engine installed on your machine: https://engine.sgail.com/learn/installation.
+Firstly, make sure you have the Stage engine installed on your machine: [https://engine.sgail.com/developers/installation](https://stage.sgail.com/developers/install).
 
 All you need to compile and play the game is as follows:
 
