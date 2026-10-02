@@ -10,10 +10,10 @@ All you need to compile and play the game is as follows:
 
 ```sh
 # Compile the Ferryman game files.
-stage build [documents]/ferryman/
+stage compile [documents]/ferryman/
 
 # Play the compiled game.
-stage play ferryman.stg
+stage ferryman.stg --gui
 ```
 
 ## The pictures
