@@ -9,11 +9,17 @@ Firstly, make sure you have the Stage engine installed on your machine: [https:/
 All you need to compile and play the game is as follows:
 
 ```sh
+# Clone the ferryman source repository.
+git clone git@github.com:stageengine/ferryman.git
+
+# Enter the ferryman source file directory.
+cd ferryman
+
 # Compile the Ferryman game files.
-stage compile [documents]/ferryman/
+stage compile . -o ferryman.stg
 
 # Play the compiled game.
-stage ferryman.stg --gui
+stage ./ferryman.stg --gui
 ```
 
 ## The pictures
