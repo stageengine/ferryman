@@ -1,3 +1,2 @@
-topics:
-  - id: road
-    synonyms: [route]
+- id: road
+  synonyms: [route]
