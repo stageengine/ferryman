@@ -130,7 +130,7 @@ actions:
         data:
           text: '"Keep it," they say. "I keep beer. That is the arrangement."'
 
-knows:
+knowledge:
   - verb: tell
     triggers:
       - type: response
@@ -158,7 +158,7 @@ knows:
       - type: response
         data:
           text: '"Nine years in this village and I''ve never once been up that road."'
-    knows:
+    knowledge:
       - id: barkeep-why-not
         triggers:
           - type: response
@@ -171,7 +171,7 @@ knows:
               text: >-
                 They start the cloth again, slower. "It's not that I do not want to go up. I want
                 to go up the way you want to sit down."
-        knows:
+        knowledge:
           - id: barkeep-not-the-pass
             triggers:
               - type: response
@@ -183,7 +183,7 @@ knows:
               - type: response
                 data:
                   text: '"It''s never been the pass."'
-            knows:
+            knowledge:
               - id: barkeep-the-coin
                 triggers:
                   - type: response
@@ -199,7 +199,7 @@ knows:
                         across this bar. Not one of them has ever been in that till the next
                         morning. It's empty every day when I open up. I stopped counting and then
                         I stopped looking."
-                knows:
+                knowledge:
                   - id: barkeep-the-sentence
                     triggers:
                       - type: response
@@ -218,7 +218,7 @@ knows:
                             the sentence rather than a part of it."
                       - type: set-flag
                         data: { flag: barkeep-told }
-                    knows:
+                    knowledge:
                       - id: barkeep-the-kindness
                         triggers:
                           - type: response
@@ -234,7 +234,7 @@ knows:
                                 "Do me one kindness on your way. When you are out on that water, do
                                 not look back at this village." A shrug, and the cloth moves. "Nobody
                                 ever does. I would rather it stayed that way."
-                        knows:
+                        knowledge:
                           - id: barkeep-done
                             triggers:
                               - type: response

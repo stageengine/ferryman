@@ -14,7 +14,7 @@ presence:
             sky has not moved at all.
 
   - triggers:
-      - type: audio:play
+      - type: sound:play
         data:
           id: village-road-ambience
 
@@ -102,7 +102,7 @@ objects:
             data: { flag: lantern-lit, value: true }
           - type: achievement
             data: { id: lit-the-lantern }
-          - type: audio:play
+          - type: sound:play
             data: { id: lantern-key-turn }
 
   - id: stump

@@ -165,7 +165,7 @@ actions:
             The hand does not close and does not move. "One coin," they say. "Not that. It has never once
             been anything else and I would not know what to do with it."
 
-knows:
+knowledge:
   - verb: tell
     triggers:
       - type: response

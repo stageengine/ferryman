@@ -124,7 +124,7 @@ actions:
         data:
           text: '"That''s kind," they say, "and it''s not a pint."'
 
-knows:
+knowledge:
   - verb: tell
     topic: soldier
     requires:
@@ -177,7 +177,7 @@ knows:
             They look at the glass. "Mind," they say, "the depot will write me another for the
             asking, and a day either way has never mattered to anybody yet. Buy me a pint and
             you can have this one."
-    knows:
+    knowledge:
       - topic: price
         triggers:
           - type: response

@@ -1,7 +1,7 @@
 - id: road
 
 - id: north
-  knows:
+  knowledge:
     - triggers:
         - type: response
           data:

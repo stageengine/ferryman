@@ -89,7 +89,7 @@ actions:
         data:
           text: '"I''m on the gate," they say, which is a no.'
 
-knows:
+knowledge:
   - verb: tell
     topic: soldier
     requires:
@@ -146,7 +146,7 @@ knows:
           text: >-
             "The carter has one. it's in the tavern with the carter, and the carter is in the
             tavern with a glass they have not got the price of."
-    knows:
+    knowledge:
       - topic: captain
         triggers:
           - type: response
@@ -156,7 +156,7 @@ knows:
                 given." A pause, and their hand goes flat over the coals. "I could not tell you
                 the name. I've said the word ten thousand times and there is nothing behind
                 it."
-        knows:
+        knowledge:
           - topic: soldier
             open: true
             triggers:

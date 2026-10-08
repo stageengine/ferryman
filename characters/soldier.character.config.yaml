@@ -107,7 +107,7 @@ actions:
         data:
           text: '"That is good of you," they say, "and it''s not the thing I am short of."'
 
-knows:
+knowledge:
   - verb: tell
     topic: ferry
     requires:
@@ -203,7 +203,7 @@ knows:
             "Yes," they say, simply. "In the March, on this road, and I did not see it coming
             because it came from behind me." They say it the way you would give a date. "It's
             knowing it that is easy. It's the after that nobody tells you a single thing about."
-    knows:
+    knowledge:
       - topic: soldier
         open: true
         triggers:
