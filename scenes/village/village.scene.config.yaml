@@ -3,7 +3,7 @@ id: village
 name: The Village
 
 presence:
-  - requires:
+  - conditions:
       - type: visited
         data: { times: 2 }
     triggers:
@@ -69,7 +69,7 @@ objects:
 
       - id: look
         preposition: under
-        requires:
+        conditions:
           - type: performed
             negate: true
             data: { object: stones, action: look, preposition: under, times: 1 }
@@ -86,7 +86,7 @@ objects:
 
       - id: look
         preposition: under
-        requires:
+        conditions:
           - type: performed
             negate: true
             data: { object: stones, action: look, preposition: under, times: 2 }
@@ -104,7 +104,7 @@ objects:
 
       - id: look
         preposition: under
-        requires:
+        conditions:
           - type: performed
             negate: true
             data: { object: stones, action: look, preposition: under, times: 3 }
@@ -289,7 +289,7 @@ characters:
 navigation:
   - id: north
     synonyms: [gate, road]
-    requires:
+    conditions:
       - type: has-item
         data: { object: pass }
         failure:

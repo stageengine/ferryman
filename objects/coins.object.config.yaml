@@ -19,7 +19,7 @@ measures:
 
 actions:
   - id: look
-    requires:
+    conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 3 }
     triggers:
@@ -30,7 +30,7 @@ actions:
             still on them. They do not chink together the way you expect them to.
 
   - id: look
-    requires:
+    conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 2 }
     triggers:

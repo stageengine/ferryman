@@ -3,7 +3,7 @@ id: village-road
 name: The Village Road
 
 presence:
-  - requires:
+  - conditions:
       - type: visited
         data: { times: 2 }
     triggers:
@@ -39,7 +39,7 @@ objects:
 
     actions:
       - id: walk
-        requires:
+        conditions:
           - type: has-item
             negate: true
             data: { object: lantern }
@@ -58,7 +58,7 @@ objects:
               text: You have it with you. Wherever you go, it goes.
 
       - id: look
-        requires:
+        conditions:
           - type: flag
             data: { flag: lantern-lit, value: true }
         triggers:
@@ -78,7 +78,7 @@ objects:
                 worth the name, and you are fairly sure it will light.
 
       - id: use
-        requires:
+        conditions:
           - type: has-item
             data: { object: lantern }
             failure:
@@ -141,7 +141,7 @@ objects:
                 is that there is a village at the end of it.
 
       - id: look
-        requires:
+        conditions:
           - type: flag
             data: { flag: lantern-lit, value: true }
         triggers:
@@ -194,7 +194,7 @@ navigation:
   - id: north
     synonyms: [village, roofs, lights]
 
-    requires:
+    conditions:
       - type: flag
         data: { flag: lantern-lit, value: true }
         failure:

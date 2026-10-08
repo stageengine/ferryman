@@ -3,7 +3,7 @@ id: river-crossing
 name: The River Crossing
 
 presence:
-  - requires:
+  - conditions:
       - type: flag
         data: { flag: soldier-sent }
     triggers:
@@ -28,7 +28,7 @@ presence:
             comes out of the cloak and turns over, palm up, and stays there. "Are you not
             coming as well?"
 
-  - requires:
+  - conditions:
       - type: visited
         data: { times: 2 }
     triggers:
@@ -108,7 +108,7 @@ objects:
                 on the water, and the next one down is already going into the fog.
 
       - id: look
-        requires:
+        conditions:
           - type: has-item
             data: { object: lantern }
         triggers:
@@ -195,7 +195,7 @@ navigation:
   - id: north
     synonyms: [ferry, boat, over, across]
 
-    requires:
+    conditions:
       - type: has-item
         data: { object: coins }
         failure:

@@ -48,7 +48,7 @@ actions:
 
   - id: give
     indirect: coins
-    requires:
+    conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 1 }
       - type: flag
@@ -103,7 +103,7 @@ actions:
 
   - id: give
     indirect: coins
-    requires:
+    conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 1 }
     triggers:
@@ -173,7 +173,7 @@ knowledge:
           text: >-
             "I dare say," they say, without any interest at all. "One coin."
 
-  - requires:
+  - conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 1 }
       - type: performed
@@ -186,7 +186,7 @@ knowledge:
             "You have got it in your hand," they say, out of the hood, before you are within speaking
             distance. "They nearly always have. Come on, then."
 
-  - requires:
+  - conditions:
       - type: performed
         negate: true
         data: { object: ferryman, action: ask }
@@ -213,7 +213,7 @@ knowledge:
           text: '"One coin," they say. "There''s a notice."'
 
   - topic: soldier
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-sent }
     triggers:

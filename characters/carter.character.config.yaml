@@ -47,7 +47,7 @@ actions:
   - id: ask
     preposition: for
     indirect: pass
-    requires:
+    conditions:
       - type: flag
         data: { flag: pass-given }
     triggers:
@@ -76,7 +76,7 @@ actions:
 
   - id: give
     indirect: beer
-    requires:
+    conditions:
       - type: has-item
         data: { object: beer }
     triggers:
@@ -127,7 +127,7 @@ actions:
 knowledge:
   - verb: tell
     topic: soldier
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-sent }
     triggers:
@@ -144,7 +144,7 @@ knowledge:
         data:
           text: '"I dare say," they say, and turn the glass round on the table.'
 
-  - requires:
+  - conditions:
       - type: performed
         negate: true
         data: { object: carter, action: ask }
@@ -156,7 +156,7 @@ knowledge:
             way of finishing the sentence.
 
   - topic: pass
-    requires:
+    conditions:
       - type: flag
         data: { flag: pass-given }
     triggers:

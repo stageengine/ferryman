@@ -37,7 +37,7 @@ actions:
   - id: ask
     preposition: for
     indirect: beer
-    requires:
+    conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 1 }
       - type: flag
@@ -59,7 +59,7 @@ actions:
   - id: ask
     preposition: for
     indirect: beer
-    requires:
+    conditions:
       - type: flag
         data: { flag: pint-paid }
     triggers:
@@ -84,7 +84,7 @@ actions:
 
   - id: give
     indirect: coins
-    requires:
+    conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 1 }
       - type: flag
@@ -105,7 +105,7 @@ actions:
 
   - id: give
     indirect: coins
-    requires:
+    conditions:
       - type: flag
         data: { flag: pint-paid }
     triggers:
@@ -137,7 +137,7 @@ knowledge:
         data:
           text: '"Is that right," they say, and go on wiping.'
 
-  - requires:
+  - conditions:
       - type: performed
         negate: true
         data: { object: barkeep, action: ask }

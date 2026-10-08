@@ -3,7 +3,7 @@ id: tavern
 name: The Tavern
 
 presence:
-  - requires:
+  - conditions:
       - type: flag
         data: { flag: pass-given }
     triggers:
@@ -41,7 +41,7 @@ objects:
     actions:
       - id: get
         indirect: carter
-        requires:
+        conditions:
           - type: has-item
             data: { object: beer }
         triggers:
@@ -53,7 +53,7 @@ objects:
 
       - id: get
         indirect: carter
-        requires:
+        conditions:
           - type: measure
             data: { subject: coins, measure: quantity, min: 1 }
         triggers:
@@ -82,7 +82,7 @@ objects:
       - id: get
         indirect: carter
         preposition: for
-        requires:
+        conditions:
           - type: has-item
             data: { object: beer }
         triggers:
@@ -95,7 +95,7 @@ objects:
       - id: get
         indirect: carter
         preposition: for
-        requires:
+        conditions:
           - type: measure
             data: { subject: coins, measure: quantity, min: 1 }
         triggers:
@@ -123,7 +123,7 @@ objects:
                 it is one coin whoever is drinking it."
 
       - id: look
-        requires:
+        conditions:
           - type: has-item
             data: { object: beer }
         triggers:
@@ -134,7 +134,7 @@ objects:
                 to it out of habit and get nothing back at all.
 
       - id: look
-        requires:
+        conditions:
           - type: flag
             data: { flag: pint-paid }
         triggers:
@@ -151,7 +151,7 @@ objects:
                 them says what a pint costs in a hand that has written it a great many times.
 
       - id: get
-        requires:
+        conditions:
           - type: has-item
             data: { object: beer }
         triggers:
@@ -160,7 +160,7 @@ objects:
               text: You have it in your hand already.
 
       - id: use
-        requires:
+        conditions:
           - type: has-item
             data: { object: beer }
         triggers:
@@ -178,7 +178,7 @@ objects:
               text: You would want it in your hand first.
 
       - id: get
-        requires:
+        conditions:
           - type: flag
             data: { flag: pint-paid }
         triggers:
@@ -189,7 +189,7 @@ objects:
             data: { object: beer }
 
       - id: get
-        requires:
+        conditions:
           - type: measure
             data: { subject: coins, measure: quantity, min: 1 }
         triggers:

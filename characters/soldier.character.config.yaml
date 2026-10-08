@@ -30,7 +30,7 @@ actions:
             way. It's on the back. They were walking away from whoever did it.
 
   - id: ask
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-paid }
     triggers:
@@ -59,7 +59,7 @@ actions:
 
   - id: give
     indirect: coins
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-paid }
     triggers:
@@ -71,7 +71,7 @@ actions:
 
   - id: give
     indirect: coins
-    requires:
+    conditions:
       - type: measure
         data: { subject: coins, measure: quantity, min: 2 }
     triggers:
@@ -110,7 +110,7 @@ actions:
 knowledge:
   - verb: tell
     topic: ferry
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-paid }
     triggers:
@@ -151,7 +151,7 @@ knowledge:
 
   - verb: tell
     topic: ferryman
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-paid }
     triggers:
@@ -183,7 +183,7 @@ knowledge:
         data:
           text: '"I dare say you are right," they say. "It does not get me off this stone."'
 
-  - requires:
+  - conditions:
       - type: performed
         negate: true
         data: { object: soldier, action: ask }
@@ -221,7 +221,7 @@ knowledge:
                 at four months."
 
   - topic: ferry
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-paid }
     triggers:
@@ -256,7 +256,7 @@ knowledge:
             river. It does not sound like a big river. That is the part I don't care for."
 
   - topic: coins
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-paid }
     triggers:

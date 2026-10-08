@@ -92,7 +92,7 @@ actions:
 knowledge:
   - verb: tell
     topic: soldier
-    requires:
+    conditions:
       - type: flag
         data: { flag: soldier-sent }
     triggers:
@@ -113,7 +113,7 @@ knowledge:
         data:
           text: '"You would have to know something I don''t," they say, "and nobody does."'
 
-  - requires:
+  - conditions:
       - type: performed
         negate: true
         data: { object: guard, action: ask }
@@ -126,7 +126,7 @@ knowledge:
             does, and I'd not bother trying the woods."
 
   - topic: pass
-    requires:
+    conditions:
       - type: has-item
         data: { object: pass }
     triggers:

@@ -3,7 +3,7 @@ id: road-north
 name: The Road North
 
 presence:
-  - requires:
+  - conditions:
       - type: character-here
         negate: true
         data: { character: soldier }
@@ -22,7 +22,7 @@ presence:
             the grass in front of it's worn down to the dirt in a patch about the size of a
             person standing.
 
-  - requires:
+  - conditions:
       - type: visited
         data: { times: 2 }
     triggers:
