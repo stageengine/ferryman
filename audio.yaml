@@ -1,0 +1,6 @@
+- id: village-road-ambience
+  file: sounds/village-road-ambience.mp3
+  loop: true
+
+- id: lantern-key-turn
+  file: sounds/lantern-key-turn.mp3
