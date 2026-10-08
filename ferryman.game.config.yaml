@@ -2,7 +2,7 @@ id: ferryman
 start: village-road
 metadata:
   title: Ferryman
-  version: 0.1.10
+  version: 0.1.11
   copyright: |-
     Ferryman: Journey of a Lost Soul
     Copyright (c) 2026 Sgail Ltd, released under the MIT licence for the purposes of providing a demo of the Stage engine.
